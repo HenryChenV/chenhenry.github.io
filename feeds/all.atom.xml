@@ -125,7 +125,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;写写开心下。&lt;/p&gt;</summary><category term="fun"></category><category term="c"></category></entry><entry><title>实现 Python 单例模式的几种方式</title><link href="http://henrychenv.github.io/python-design-pattern-singleton.html" rel="alternate"></link><updated>2016-03-13T11:40:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-03-13:python-design-pattern-singleton.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;p&gt;好久没写c语言了，写写开心下。&lt;/p&gt;</summary><category term="fun"></category><category term="c"></category></entry><entry><title>实现 Python 单例模式的几种方式</title><link href="http://henrychenv.github.io/python-design-pattern-singleton.html" rel="alternate"></link><updated>2016-03-13T11:40:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-03-13:python-design-pattern-singleton.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#_1"&gt;利用模块只会导入一次的特性&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#__metaclass____call__"&gt;利用__metaclass__和__call__&lt;/a&gt;&lt;/li&gt;
