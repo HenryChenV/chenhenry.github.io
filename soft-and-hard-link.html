@@ -70,7 +70,7 @@
 							<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
 							<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 							<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
-							<li ><a href="http://henrychenv.github.io/category/system.html">System</a></li>
+							<li class="active"><a href="http://henrychenv.github.io/category/system.html">System</a></li>
 							<li ><a href="http://henrychenv.github.io/category/vim.html">VIM</a></li>
 
 						<li><label>Links</label></li>
@@ -114,7 +114,7 @@
 								<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
 								<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 								<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
-								<li ><a href="http://henrychenv.github.io/category/system.html">System</a></li>
+								<li class="active"><a href="http://henrychenv.github.io/category/system.html">System</a></li>
 								<li ><a href="http://henrychenv.github.io/category/vim.html">VIM</a></li>
 						</ul>
                         <ul class="right">                                                                                                                                           
@@ -128,208 +128,223 @@
 					<div class="row">
 						<!-- Main Content -->
 						<div class="medium-9 small-12 columns" role="content">
-
 <article>
-    <h3><a href="http://henrychenv.github.io/just-for-fun-c.html"><b>反序输入指定行数的字符串</b></a></h3>
+    <h2><b>软链接，硬链接</b></h2>
+    <hr/>
     <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-03-24
-    </h6> 
-    <h6> 
+        <b>Date: </b>2016-01-30
  
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/essay.html">
-            Essay
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/fun.html">fun
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/c.html">c
-        </a>
- 
- 
+        <b>Tags: </b> 
+        <a href="http://henrychenv.github.io/tag/system.html">system</a>
+,         <a href="http://henrychenv.github.io/tag/hard-link.html">hard-link</a>
+,         <a href="http://henrychenv.github.io/tag/soft-link.html">soft-link</a>
+,         <a href="http://henrychenv.github.io/tag/symbolic-link.html">symbolic-link</a>
     </h6>
-	
-		<p class="continue"><a href="http://henrychenv.github.io/just-for-fun-c.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-design-pattern-singleton.html"><b>实现 Python 单例模式的几种方式</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-03-13
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/design-pattern.html">design-pattern
-        </a>
- 
- 
-    </h6>
+    <hr/>
 	<div class="toc">
 <ul>
-<li><a href="#_1">利用模块只会导入一次的特性</a></li>
-<li><a href="#__metaclass____call__">利用__metaclass__和__call__</a></li>
-<li><a href="#metaclass-new">利用 metaclass 和 new</a></li>
+<li><a href="#_1">概论</a></li>
+<li><a href="#_2">笔记</a><ul>
+<li><a href="#_3">知识点</a><ul>
+<li><a href="#inode">inode</a></li>
+<li><a href="#hard-link">创建hard link命令</a></li>
+<li><a href="#hard-link_1">hard link 特性</a></li>
+<li><a href="#inode_1">测试文件系统 inode 耗尽但仍有磁盘空间的情景</a></li>
+<li><a href="#soft-link">soft link 特性</a></li>
+<li><a href="#find">使用命令 find 查找软链接与硬链接</a></li>
+</ul>
+</li>
+<li><a href="#_4">问题</a></li>
+</ul>
+</li>
 </ul>
 </div>
-<h3 id="_1">利用模块只会导入一次的特性</h3>
-<p>在python中，多次导入某个模块，其实只会在第一次产生导入的动作
-World.py:  </p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># coding=utf-8</span></span>
+<h1 id="_1">概论</h1>
+<p>玩linux肯定得遇到hard link和soft(symbolic)link的问题，之前看的文章感觉不够深入，这次找到了篇好文。
+详情点击<a href="http://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html">传送门</a>,以下仅为学习笔记.</p>
+<h1 id="_2">笔记</h1>
+<h2 id="_3">知识点</h2>
+<h3 id="inode">inode</h3>
+<blockquote>
+<p>我们知道文件都有文件名与数据，这在 Linux 上被分成两个部分：用户数据 (user data) 与元数据 (metadata)。用户数据，即文件数据块 (data block)，数据块是记录文件真实内容的地方；而元数据则是文件的附加属性，如文件大小、创建时间、所有者等信息。在 Linux 中，元数据中的 inode 号（inode 是文件元数据的一部分但其并不包含文件名，inode 号即索引节点号）才是文件的唯一标识而非文件名。文件名仅是为了方便人们的记忆和使用，系统或程序通过 inode 号寻找正确的文件数据块。
+<img alt="通过文件名打开文件" src="/images/sysops/find-file-by-filename.jpg" /></p>
+</blockquote>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># stat /home/harris/source/glibc-2.16.0.tar.xz </span></span>
+<span class="code-line">File: /home/harris/source/glibc-2.16.0.tar.xz</span>
+<span class="code-line">Size: <span class="m">9990512</span>      Blocks: <span class="m">19520</span>      IO Block: <span class="m">4096</span>   regular file </span>
+<span class="code-line">    Device: 807h/2055d      Inode: <span class="m">2485677</span>     Links: <span class="m">1</span> </span>
+<span class="code-line">Access: <span class="o">(</span>0600/-rw-------<span class="o">)</span>  Uid: <span class="o">(</span> 1000/  harris<span class="o">)</span>   Gid: <span class="o">(</span> 1000/  harris<span class="o">)</span> </span>
+<span class="code-line">    ... </span>
+<span class="code-line">    ... </span>
+<span class="code-line"><span class="c1"># mv /home/harris/source/glibc-2.16.0.tar.xz /home/harris/Desktop/glibc.tar.xz </span></span>
+<span class="code-line"><span class="c1"># ls -i -F /home/harris/Desktop/glibc.tar.xz </span></span>
+<span class="code-line">    <span class="m">2485677</span> /home/harris/Desktop/glibc.tar.xz <span class="o">)</span> <span class="o">)</span><span class="sb">`</span></span>
+</pre></div>
+
+
+<h3 id="hard-link">创建hard link命令</h3>
+<div class="highlight"><pre><span class="code-line">link oldfile newfile </span>
+<span class="code-line">ln oldfile newfile</span>
+</pre></div>
+
+
+<h3 id="hard-link_1">hard link 特性</h3>
+<p>hard link 是有着相同incode的不同名文件
++ 文件有相同的incode和data block；
++ 只能对已经存在的文件创建；
++ 不能交叉文件系统
++ 不能对目录创建，仅可对文件
++ 删除一个hard link文件不影响其他相同incode号文件</p>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># ls -li </span></span>
+<span class="code-line">total <span class="m">0</span> </span>
 <span class="code-line"></span>
-<span class="code-line"><span class="sd">&quot;&quot;&quot;</span></span>
-<span class="code-line"><span class="sd">利用python模块只会导入一次的特性写单例模式 ...</span></span></pre></div>
-		<p class="continue"><a href="http://henrychenv.github.io/python-design-pattern-singleton.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/why-you-will-fail-to-have-a-great-career.html"><b>[TED] Why you will fail to have a great career</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-21
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/english.html">
-            English
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/ted.html">ted
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/dream.html">dream
-        </a>
- 
- 
-    </h6>
-	<div class="toc">
-<ul></ul>
-</div>
-<p>I want to discuss with you this afternoon why you&rsquo;re going to fail to ...</p>
-		<p class="continue"><a href="http://henrychenv.github.io/why-you-will-fail-to-have-a-great-career.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/delete-duplicate-records.html"><b>MySQL 删除重复数据</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-18
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/mysql.html">
-            MySQL
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/mysql.html">mysql
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/work.html">work
-        </a>
- 
- 
-    </h6>
-	<div class="toc">
-<ul></ul>
-</div>
-<p>删除重复数据<br />
-image_info表中每个ImgUrl应该只对应一条记录,删除多余记录</p>
-<div class="highlight"><pre><span class="code-line"><span class="k">delete</span> <span class="k">from</span> <span class="n">image_info</span> </span>
-<span class="code-line"><span class="k">where</span> <span class="k">Type</span><span class="o">=</span><span class="mi">3010</span> </span>
-<span class="code-line"><span class="k">and</span> <span class="n">id</span> <span class="k">not</span> <span class="k">in</span> <span class="p">(</span></span>
-<span class="code-line">        <span class="k">select</span> <span class="n">id ...</span></span></pre></div>
-		<p class="continue"><a href="http://henrychenv.github.io/delete-duplicate-records.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-configparser.html"><b>用ConfigParser解析配置项</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-11
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/reading-notes.html">reading-notes
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/configparser.html">configparser
-        </a>
- 
- 
-    </h6>
-	<p>python提供了现成的配置文件解析标准库ConfigParser,<br />
-使用方法不做详细介绍,只是记录下他的配置项查找规则,避免踩坑。</p>
-<div class="toc">
-<ul>
-<li><a href="#_1">查找顺序</a></li>
-<li><a href="#_2">测试代码</a></li>
-</ul>
-</div>
-<h3 id="_1">查找顺序</h3>
-<p>使用时得注意点他的参数查找顺序,特别提防构造函数中的defaults和get方法中的vars参数，<br />
-配置项查找规则如下:</p>
-<ol>
-<li>找不到section，raise ConfigParser.NoSectionError</li>
-<li>vars ...</li></ol>
-		<p class="continue"><a href="http://henrychenv.github.io/python-configparser.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
+<span class="code-line">// 只能对已存在的文件创建硬连接</span>
+<span class="code-line"><span class="c1"># link old.file hard.link </span></span>
+<span class="code-line">link: cannot create link <span class="s1">&#39;hard.link&#39;</span> to <span class="s1">&#39;old.file&#39;</span>: No such file or directory </span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># echo &quot;This is an original file&quot; &gt; old.file </span></span>
+<span class="code-line"><span class="c1"># cat old.file </span></span>
+<span class="code-line">This is an original file </span>
+<span class="code-line"><span class="c1"># stat old.file </span></span>
+<span class="code-line">File: <span class="s1">&#39;old.file&#39;</span></span>
+<span class="code-line">Size: <span class="m">25</span>           Blocks: <span class="m">8</span>          IO Block: <span class="m">4096</span>   regular file </span>
+<span class="code-line">    Device: 807h/2055d      Inode: <span class="m">660650</span>      Links: <span class="m">2</span> </span>
+<span class="code-line">Access: <span class="o">(</span>0644/-rw-r--r--<span class="o">)</span>  Uid: <span class="o">(</span>    0/    root<span class="o">)</span>   Gid: <span class="o">(</span>    0/    root<span class="o">)</span> </span>
+<span class="code-line">    ... </span>
+<span class="code-line">// 文件有相同的 inode 号以及 data block </span>
+<span class="code-line"><span class="c1"># link old.file hard.link | ls -li </span></span>
+<span class="code-line">    total <span class="m">8</span> </span>
+<span class="code-line">    <span class="m">660650</span> -rw-r--r-- <span class="m">2</span> root root <span class="m">25</span> Sep  <span class="m">1</span> 17:44 hard.link </span>
+<span class="code-line">    <span class="m">660650</span> -rw-r--r-- <span class="m">2</span> root root <span class="m">25</span> Sep  <span class="m">1</span> 17:44 old.file </span>
+<span class="code-line"></span>
+<span class="code-line">// 不能交叉文件系统</span>
+<span class="code-line"><span class="c1"># ln /dev/input/event5 /root/bfile.txt </span></span>
+<span class="code-line">    ln: failed to create hard link <span class="s1">&#39;/root/bfile.txt&#39;</span> <span class="o">=</span>&gt; <span class="s1">&#39;/dev/input/event5&#39;</span>: </span>
+<span class="code-line">    Invalid cross-device link </span>
+<span class="code-line"><span class="c1"># df -i --print-type </span></span>
+<span class="code-line">    Filesystem     Type       Inodes  IUsed    IFree IUse% Mounted on </span>
+<span class="code-line">    /dev/sda7      ext4      <span class="m">3147760</span> <span class="m">283483</span>  <span class="m">2864277</span>   10% / </span>
+<span class="code-line">    udev           devtmpfs   <span class="m">496088</span>    <span class="m">553</span>   <span class="m">495535</span>    1% /dev </span>
+<span class="code-line">    tmpfs          tmpfs      <span class="m">499006</span>    <span class="m">491</span>   <span class="m">498515</span>    1% /run </span>
+<span class="code-line">    none           tmpfs      <span class="m">499006</span>      <span class="m">3</span>   <span class="m">499003</span>    1% /run/lock </span>
+<span class="code-line">    none           tmpfs      <span class="m">499006</span>     <span class="m">15</span>   <span class="m">498991</span>    1% /run/shm </span>
+<span class="code-line">    /dev/sda6      fuseblk  <span class="m">74383900</span>   <span class="m">4786</span> <span class="m">74379114</span>    1% /media/DiskE </span>
+<span class="code-line">    /dev/sda8      fuseblk  <span class="m">29524592</span>  <span class="m">19939</span> <span class="m">29504653</span>    1% /media/DiskF </span>
+<span class="code-line"></span>
+<span class="code-line">// 不能对目录进行创建硬连接</span>
+<span class="code-line"><span class="c1"># mkdir -p old.dir/test </span></span>
+<span class="code-line"><span class="c1"># ln old.dir/ hardlink.dir </span></span>
+<span class="code-line">    ln: <span class="s1">&#39;old.dir/&#39;</span>: hard link not allowed <span class="k">for</span> directory </span>
+<span class="code-line"><span class="c1"># ls -iF </span></span>
+<span class="code-line">    <span class="m">660650</span> hard.link  <span class="m">657948</span> old.dir/  <span class="m">660650</span> old.file</span>
+</pre></div>
 
-<div class="row" style="margin-bottom: -1.25em;">
-	<div class="small-12 columns text-center">
-		<div class="pagination-centered">
-			<ul class="pagination">
-				<li class="arrow unavailable"><a href="#">&larr; Previous</a></li>
-				<li class="current"><a href="http://henrychenv.github.io/index.html">1</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index2.html">2</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index3.html">3</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index4.html">4</a></li>
-				<li class="arrow"><a href="http://henrychenv.github.io/index2.html">Next &rarr;</a></li>
-			</ul>
-		</div>
+
+<h3 id="inode_1">测试文件系统 inode 耗尽但仍有磁盘空间的情景</h3>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># dd if=/dev/zero of=mo.img bs=5120k count=1 </span></span>
+<span class="code-line"><span class="c1"># ls -lh mo.img </span></span>
+<span class="code-line">-rw-r--r-- <span class="m">1</span> root root 5.0M Sep  <span class="m">1</span> 17:54 mo.img </span>
+<span class="code-line"><span class="c1"># mkfs -t ext4  -F ./mo.img </span></span>
+<span class="code-line">... </span>
+<span class="code-line">    OS type: Linux </span>
+<span class="code-line">    Block <span class="nv">size</span><span class="o">=</span><span class="m">1024</span> <span class="o">(</span><span class="nv">log</span><span class="o">=</span>0<span class="o">)</span> </span>
+<span class="code-line">Fragment <span class="nv">size</span><span class="o">=</span><span class="m">1024</span> <span class="o">(</span><span class="nv">log</span><span class="o">=</span>0<span class="o">)</span> </span>
+<span class="code-line">    <span class="nv">Stride</span><span class="o">=</span><span class="m">0</span> blocks, Stripe <span class="nv">width</span><span class="o">=</span><span class="m">0</span> blocks </span>
+<span class="code-line">    <span class="m">1280</span> inodes, <span class="m">5120</span> blocks </span>
+<span class="code-line">    <span class="m">256</span> blocks <span class="o">(</span>5.00%<span class="o">)</span> reserved <span class="k">for</span> the super user </span>
+<span class="code-line">    ... </span>
+<span class="code-line">    ... </span>
+<span class="code-line">    Writing superblocks and filesystem accounting information: <span class="k">done</span> </span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># mount -o loop ./mo.img /mnt </span></span>
+<span class="code-line"><span class="c1"># cat /mnt/inode_test.sh </span></span>
+<span class="code-line"><span class="c1">#!/bin/bash </span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">for</span> <span class="o">((</span><span class="nv">i</span> <span class="o">=</span> 1<span class="p">;</span> <span class="p">;</span> i++<span class="o">))</span> </span>
+<span class="code-line">    <span class="k">do</span> </span>
+<span class="code-line">    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> </span>
+<span class="code-line">    <span class="nb">echo</span>  <span class="s2">&quot;This is file_</span>$<span class="s2">i&quot;</span> &gt; file_$i </span>
+<span class="code-line">    <span class="k">else</span> </span>
+<span class="code-line">    <span class="nb">exit</span> <span class="m">0</span> </span>
+<span class="code-line">    <span class="k">fi</span> </span>
+<span class="code-line">    <span class="k">done</span> </span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># ./inode_test.sh </span></span>
+<span class="code-line">    ./inode_test.sh: line 6: file_1269: No space left on device </span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># df -iT /mnt/; du -sh /mnt/ </span></span>
+<span class="code-line">    Filesystem     Type Inodes IUsed IFree IUse% Mounted on </span>
+<span class="code-line">    /dev/loop0     ext4   <span class="m">1280</span>  <span class="m">1280</span>     <span class="m">0</span>  100% /mnt </span>
+<span class="code-line">    1.3M    /mnt/ <span class="o">]</span></span>
+</pre></div>
+
+
+<h3 id="soft-link">soft link 特性</h3>
+<ul>
+<li>soft link有自己的文件属性及权限</li>
+<li>可以对不存在的文件或目录创建软链接</li>
+<li>可交叉文件系统</li>
+<li>可以对文件或目录创建</li>
+<li>删除soft link 不影响原文件，删除原文件soft link会变成死链</li>
+</ul>
+<p><img alt="链接访问" src="/images/sysops/visit-soft-link.jpg" title="链接访问" /></p>
+<h3 id="find">使用命令 find 查找软链接与硬链接</h3>
+<div class="highlight"><pre><span class="code-line">// 查找在路径 /home 下的文件 data.txt 的软链接</span>
+<span class="code-line"><span class="c1"># find /home -lname data.txt </span></span>
+<span class="code-line">/home/harris/debug/test2/a </span>
+<span class="code-line"></span>
+<span class="code-line">// 查看路径 /home 有相同 inode 的所有硬链接</span>
+<span class="code-line"><span class="c1"># find /home -samefile /home/harris/debug/test3/old.file </span></span>
+<span class="code-line">/home/harris/debug/test3/hard.link </span>
+<span class="code-line">/home/harris/debug/test3/old.file </span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># find /home -inum 660650 </span></span>
+<span class="code-line">/home/harris/debug/test3/hard.link </span>
+<span class="code-line">/home/harris/debug/test3/old.file </span>
+<span class="code-line"></span>
+<span class="code-line">// 列出路径 /home/harris/debug/ 下的所有软链接文件</span>
+<span class="code-line"><span class="c1"># find /home/harris/debug/ -type l -ls </span></span>
+<span class="code-line"><span class="m">656662</span> <span class="m">0</span> lrwxrwxrwx <span class="m">1</span> harris harris <span class="m">1</span> Sep <span class="m">1</span> 14:37 /home/harris/debug/test2/b -&gt; a</span>
+<span class="code-line"><span class="m">656627</span> <span class="m">0</span> lrwxrwxrwx <span class="m">1</span> harris harris <span class="m">8</span> Sep <span class="m">1</span> 14:37 /home/harris/debug/test2/a -&gt; </span>
+<span class="code-line">data.txt</span>
+<span class="code-line"><span class="m">789467</span> <span class="m">0</span> lrwxrwxrwx <span class="m">1</span> root root <span class="m">8</span> Sep <span class="m">1</span> 18:00 /home/harris/debug/test/soft.link -&gt; old.file </span>
+<span class="code-line"><span class="m">789496</span>    <span class="m">0</span> lrwxrwxrwx   <span class="m">1</span> root     root            <span class="m">7</span> Sep  <span class="m">1</span> 18:01 </span>
+<span class="code-line">/home/harris/debug/test/soft.link.dir -&gt; old.dir</span>
+</pre></div>
+
+
+<h2 id="_4">问题</h2>
+<p>Q1. 对于作者提到的“若系统允许对目录创建硬链接，则会产生目录环。” 表示怀疑，
+如果这是不能对目录创建硬链接的原因，那么对目录创建软链接也会存在这个问题，按你的意思，这种环只会在对目录创建硬链接(假设可以)的时候出现</p>
+	<hr/>
+    <h6>
+        Written by 
+        <a href="http://henrychenv.github.io/author/henry-chen.html">
+            Henry Chen
+        </a> 
+        in <a href="http://henrychenv.github.io/category/system.html">System</a> 
+        on 2016-01-30,
+        last updated on 2016-01-31.
+    </h6>
+</article>
+
+<hr/>
+<div class="row">
+	<div class="small-12 columns">
+		<h3>Comments</h3>
+		<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'spiritline';
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 	</div>
 </div>
-
 						</div>
 						<!-- End Main Content -->
 						<!-- Sidebar -->

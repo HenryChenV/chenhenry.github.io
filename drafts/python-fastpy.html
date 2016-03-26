@@ -68,7 +68,7 @@
 							<li ><a href="http://henrychenv.github.io/category/english.html">English</a></li>
 							<li ><a href="http://henrychenv.github.io/category/essay.html">Essay</a></li>
 							<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
-							<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
+							<li class="active"><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 							<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
 							<li ><a href="http://henrychenv.github.io/category/system.html">System</a></li>
 							<li ><a href="http://henrychenv.github.io/category/vim.html">VIM</a></li>
@@ -112,7 +112,7 @@
 								<li ><a href="http://henrychenv.github.io/category/english.html">English</a></li>
 								<li ><a href="http://henrychenv.github.io/category/essay.html">Essay</a></li>
 								<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
-								<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
+								<li class="active"><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 								<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
 								<li ><a href="http://henrychenv.github.io/category/system.html">System</a></li>
 								<li ><a href="http://henrychenv.github.io/category/vim.html">VIM</a></li>
@@ -128,208 +128,76 @@
 					<div class="row">
 						<!-- Main Content -->
 						<div class="medium-9 small-12 columns" role="content">
-
 <article>
-    <h3><a href="http://henrychenv.github.io/just-for-fun-c.html"><b>反序输入指定行数的字符串</b></a></h3>
+    <h2><b>fastpy 源码笔记</b></h2>
+    <hr/>
     <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-03-24
-    </h6> 
-    <h6> 
+        <b>Date: </b>2016-03-12
  
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/essay.html">
-            Essay
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/fun.html">fun
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/c.html">c
-        </a>
- 
- 
+        <b>Tags: </b> 
+        <a href="http://henrychenv.github.io/tag/python.html">python</a>
+,         <a href="http://henrychenv.github.io/tag/web.html">web</a>
+,         <a href="http://henrychenv.github.io/tag/notes.html">notes</a>
     </h6>
-	
-		<p class="continue"><a href="http://henrychenv.github.io/just-for-fun-c.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-design-pattern-singleton.html"><b>实现 Python 单例模式的几种方式</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-03-13
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/design-pattern.html">design-pattern
-        </a>
- 
- 
-    </h6>
+    <hr/>
 	<div class="toc">
 <ul>
-<li><a href="#_1">利用模块只会导入一次的特性</a></li>
-<li><a href="#__metaclass____call__">利用__metaclass__和__call__</a></li>
-<li><a href="#metaclass-new">利用 metaclass 和 new</a></li>
+<li><a href="#_1">多进程进程数量</a></li>
+<li><a href="#fd">文件描述符fd</a></li>
+<li><a href="#epoll">epoll</a></li>
+<li><a href="#gevent">协程 gevent</a></li>
 </ul>
 </div>
-<h3 id="_1">利用模块只会导入一次的特性</h3>
-<p>在python中，多次导入某个模块，其实只会在第一次产生导入的动作
-World.py:  </p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># coding=utf-8</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="sd">&quot;&quot;&quot;</span></span>
-<span class="code-line"><span class="sd">利用python模块只会导入一次的特性写单例模式 ...</span></span></pre></div>
-		<p class="continue"><a href="http://henrychenv.github.io/python-design-pattern-singleton.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/why-you-will-fail-to-have-a-great-career.html"><b>[TED] Why you will fail to have a great career</b></a></h3>
+<h3 id="_1">多进程进程数量</h3>
+<p>进程数一般等于cpu的核数</p>
+<h3 id="fd">文件描述符fd</h3>
+<p>文件描述符（File
+descriptor）是计算机科学中的一个术语，是一个用于表述指向文件的引用的抽象化概念。</p>
+<p>文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。但是文件描述符这一概念往往只适用于UNIX、Linux这样的操作系统。</p>
+<h3 id="epoll">epoll</h3>
+<p><a href="https://segmentfault.com/a/1190000003063859">Linux IO模式及 select、poll、epoll详解</a></p>
+<p><a href="http://www.cnblogs.com/Anker/p/3263780.html">IO多路复用之epoll总结</a></p>
+<p><a href="http://www.cnblogs.com/OnlyXP/archive/2007/08/10/851222.html">epoll精髓</a></p>
+<p><a href="https://segmentfault.com/a/1190000003063859#articleHeader21">Linux IO模式及select、poll、epoll详解</a> (the best)</p>
+<p><a href="http://www.cppblog.com/yangsf5/archive/2009/03/12/76353.aspx">epoll的各个事件触发条件测试</a></p>
+<blockquote>
+<p>1、listen fd，有新连接请求，触发EPOLLIN。<br />
+2、对端发送普通数据，触发EPOLLIN。<br />
+3、带外数据，只触发EPOLLPRI。<br />
+4、对端正常关闭（程序里close()，shell下kill或ctr+c），触发EPOLLIN和EPOLLRDHUP，但是不触发EPOLLERR和EPOLLHUP。 关于这点，以前一直以为会触发EPOLLERR或者EPOLLHUP。 再man epoll_ctl看下后两个事件的说明，这两个应该是本端（server端）出错才触发的。<br />
+5、对端异常断开连接（只测了拔网线），没触发任何事件。  </p>
+</blockquote>
+<h3 id="gevent">协程 gevent</h3>
+<p><a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001407503089986d175822da68d4d6685fbe849a0e0ca35000">gevent 廖雪峰的官方网站</a></p>
+	<hr/>
     <h6>
-        <b>Written by </b>
+        Written by 
         <a href="http://henrychenv.github.io/author/henry-chen.html">
             Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-21
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/english.html">
-            English
         </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/ted.html">ted
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/dream.html">dream
-        </a>
- 
- 
+        in <a href="http://henrychenv.github.io/category/python.html">Python</a> 
+        on 2016-03-12,
+        last updated on 2016-03-12.
     </h6>
-	<div class="toc">
-<ul></ul>
-</div>
-<p>I want to discuss with you this afternoon why you&rsquo;re going to fail to ...</p>
-		<p class="continue"><a href="http://henrychenv.github.io/why-you-will-fail-to-have-a-great-career.html">Continue reading &raquo;</a></p>
 </article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/delete-duplicate-records.html"><b>MySQL 删除重复数据</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-18
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/mysql.html">
-            MySQL
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/mysql.html">mysql
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/work.html">work
-        </a>
- 
- 
-    </h6>
-	<div class="toc">
-<ul></ul>
-</div>
-<p>删除重复数据<br />
-image_info表中每个ImgUrl应该只对应一条记录,删除多余记录</p>
-<div class="highlight"><pre><span class="code-line"><span class="k">delete</span> <span class="k">from</span> <span class="n">image_info</span> </span>
-<span class="code-line"><span class="k">where</span> <span class="k">Type</span><span class="o">=</span><span class="mi">3010</span> </span>
-<span class="code-line"><span class="k">and</span> <span class="n">id</span> <span class="k">not</span> <span class="k">in</span> <span class="p">(</span></span>
-<span class="code-line">        <span class="k">select</span> <span class="n">id ...</span></span></pre></div>
-		<p class="continue"><a href="http://henrychenv.github.io/delete-duplicate-records.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-configparser.html"><b>用ConfigParser解析配置项</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-11
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/reading-notes.html">reading-notes
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/configparser.html">configparser
-        </a>
- 
- 
-    </h6>
-	<p>python提供了现成的配置文件解析标准库ConfigParser,<br />
-使用方法不做详细介绍,只是记录下他的配置项查找规则,避免踩坑。</p>
-<div class="toc">
-<ul>
-<li><a href="#_1">查找顺序</a></li>
-<li><a href="#_2">测试代码</a></li>
-</ul>
-</div>
-<h3 id="_1">查找顺序</h3>
-<p>使用时得注意点他的参数查找顺序,特别提防构造函数中的defaults和get方法中的vars参数，<br />
-配置项查找规则如下:</p>
-<ol>
-<li>找不到section，raise ConfigParser.NoSectionError</li>
-<li>vars ...</li></ol>
-		<p class="continue"><a href="http://henrychenv.github.io/python-configparser.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
 
-<div class="row" style="margin-bottom: -1.25em;">
-	<div class="small-12 columns text-center">
-		<div class="pagination-centered">
-			<ul class="pagination">
-				<li class="arrow unavailable"><a href="#">&larr; Previous</a></li>
-				<li class="current"><a href="http://henrychenv.github.io/index.html">1</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index2.html">2</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index3.html">3</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index4.html">4</a></li>
-				<li class="arrow"><a href="http://henrychenv.github.io/index2.html">Next &rarr;</a></li>
-			</ul>
-		</div>
+<hr/>
+<div class="row">
+	<div class="small-12 columns">
+		<h3>Comments</h3>
+		<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'spiritline';
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 	</div>
 </div>
-
 						</div>
 						<!-- End Main Content -->
 						<!-- Sidebar -->

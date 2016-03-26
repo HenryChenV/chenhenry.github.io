@@ -66,7 +66,7 @@
 						<li><a href="http://henrychenv.github.io">Home</a></li>
 						<li><label>Categories</label></li>
 							<li ><a href="http://henrychenv.github.io/category/english.html">English</a></li>
-							<li ><a href="http://henrychenv.github.io/category/essay.html">Essay</a></li>
+							<li class="active"><a href="http://henrychenv.github.io/category/essay.html">Essay</a></li>
 							<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
 							<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 							<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
@@ -110,7 +110,7 @@
 					<section class="top-bar-section">
 						<ul class="left">
 								<li ><a href="http://henrychenv.github.io/category/english.html">English</a></li>
-								<li ><a href="http://henrychenv.github.io/category/essay.html">Essay</a></li>
+								<li class="active"><a href="http://henrychenv.github.io/category/essay.html">Essay</a></li>
 								<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
 								<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 								<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
@@ -128,208 +128,173 @@
 					<div class="row">
 						<!-- Main Content -->
 						<div class="medium-9 small-12 columns" role="content">
-
 <article>
-    <h3><a href="http://henrychenv.github.io/just-for-fun-c.html"><b>反序输入指定行数的字符串</b></a></h3>
+    <h2><b>反序输入指定行数的字符串</b></h2>
+    <hr/>
     <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-03-24
-    </h6> 
-    <h6> 
+        <b>Date: </b>2016-03-24
  
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/essay.html">
-            Essay
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/fun.html">fun
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/c.html">c
-        </a>
- 
- 
+        <b>Tags: </b> 
+        <a href="http://henrychenv.github.io/tag/fun.html">fun</a>
+,         <a href="http://henrychenv.github.io/tag/c.html">c</a>
     </h6>
-	
-		<p class="continue"><a href="http://henrychenv.github.io/just-for-fun-c.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-design-pattern-singleton.html"><b>实现 Python 单例模式的几种方式</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-03-13
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/design-pattern.html">design-pattern
-        </a>
- 
- 
-    </h6>
+    <hr/>
 	<div class="toc">
-<ul>
-<li><a href="#_1">利用模块只会导入一次的特性</a></li>
-<li><a href="#__metaclass____call__">利用__metaclass__和__call__</a></li>
-<li><a href="#metaclass-new">利用 metaclass 和 new</a></li>
-</ul>
+<ul></ul>
 </div>
-<h3 id="_1">利用模块只会导入一次的特性</h3>
-<p>在python中，多次导入某个模块，其实只会在第一次产生导入的动作
-World.py:  </p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># coding=utf-8</span></span>
+<p>好久没写c语言了，今天帮一同学写个例子<br />
+要求如下  </p>
+<p>先输入行数，然后依次输入字符串，<br />
+输入完成后，反序输出每行的字符串  </p>
+<p>代码如下:  </p>
+<div class="highlight"><pre><span class="code-line"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span></span>
+<span class="code-line"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span></span>
+<span class="code-line"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span></span>
 <span class="code-line"></span>
-<span class="code-line"><span class="sd">&quot;&quot;&quot;</span></span>
-<span class="code-line"><span class="sd">利用python模块只会导入一次的特性写单例模式 ...</span></span></pre></div>
-		<p class="continue"><a href="http://henrychenv.github.io/python-design-pattern-singleton.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/why-you-will-fail-to-have-a-great-career.html"><b>[TED] Why you will fail to have a great career</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-21
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/english.html">
-            English
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/ted.html">ted
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/dream.html">dream
-        </a>
- 
- 
-    </h6>
-	<div class="toc">
-<ul></ul>
-</div>
-<p>I want to discuss with you this afternoon why you&rsquo;re going to fail to ...</p>
-		<p class="continue"><a href="http://henrychenv.github.io/why-you-will-fail-to-have-a-great-career.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/delete-duplicate-records.html"><b>MySQL 删除重复数据</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-18
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/mysql.html">
-            MySQL
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/mysql.html">mysql
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/work.html">work
-        </a>
- 
- 
-    </h6>
-	<div class="toc">
-<ul></ul>
-</div>
-<p>删除重复数据<br />
-image_info表中每个ImgUrl应该只对应一条记录,删除多余记录</p>
-<div class="highlight"><pre><span class="code-line"><span class="k">delete</span> <span class="k">from</span> <span class="n">image_info</span> </span>
-<span class="code-line"><span class="k">where</span> <span class="k">Type</span><span class="o">=</span><span class="mi">3010</span> </span>
-<span class="code-line"><span class="k">and</span> <span class="n">id</span> <span class="k">not</span> <span class="k">in</span> <span class="p">(</span></span>
-<span class="code-line">        <span class="k">select</span> <span class="n">id ...</span></span></pre></div>
-		<p class="continue"><a href="http://henrychenv.github.io/delete-duplicate-records.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-configparser.html"><b>用ConfigParser解析配置项</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-11
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/reading-notes.html">reading-notes
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/configparser.html">configparser
-        </a>
- 
- 
-    </h6>
-	<p>python提供了现成的配置文件解析标准库ConfigParser,<br />
-使用方法不做详细介绍,只是记录下他的配置项查找规则,避免踩坑。</p>
-<div class="toc">
-<ul>
-<li><a href="#_1">查找顺序</a></li>
-<li><a href="#_2">测试代码</a></li>
-</ul>
-</div>
-<h3 id="_1">查找顺序</h3>
-<p>使用时得注意点他的参数查找顺序,特别提防构造函数中的defaults和get方法中的vars参数，<br />
-配置项查找规则如下:</p>
-<ol>
-<li>找不到section，raise ConfigParser.NoSectionError</li>
-<li>vars ...</li></ol>
-		<p class="continue"><a href="http://henrychenv.github.io/python-configparser.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
+<span class="code-line"><span class="cp">#define MAX_CHARS_PER_LINE 30</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">node</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="kt">char</span> <span class="o">*</span><span class="n">data</span><span class="p">;</span></span>
+<span class="code-line">    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">next</span><span class="p">;</span></span>
+<span class="code-line"><span class="p">}</span><span class="n">str_node</span><span class="p">,</span> <span class="o">*</span><span class="n">pstr_node</span><span class="p">;</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="kt">void</span> <span class="nf">print_reversed</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span></span>
+<span class="code-line">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="n">len</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%c&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span></span>
+<span class="code-line">    <span class="p">}</span></span>
+<span class="code-line">    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span></span>
+<span class="code-line"><span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">pstr_node</span> <span class="nf">create_str_node</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="n">pstr_node</span> <span class="n">node</span><span class="p">;</span></span>
+<span class="code-line">    <span class="n">node</span> <span class="o">=</span> <span class="p">(</span><span class="n">pstr_node</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">str_node</span><span class="p">));</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="p">(</span><span class="n">node</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="n">perror</span><span class="p">(</span><span class="s">&quot;malloc str node error!&quot;</span><span class="p">);</span></span>
+<span class="code-line">        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span></span>
+<span class="code-line">    <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">node</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">((</span><span class="n">len</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="n">perror</span><span class="p">(</span><span class="s">&quot;malloc node data error!&quot;</span><span class="p">);</span></span>
+<span class="code-line">        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span></span>
+<span class="code-line">    <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">strcpy</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span></span>
+<span class="code-line">    <span class="n">node</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">len</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">return</span> <span class="n">node</span><span class="p">;</span></span>
+<span class="code-line"><span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="kt">int</span> <span class="nf">free_all</span><span class="p">(</span><span class="n">pstr_node</span> <span class="n">head</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="n">pstr_node</span> <span class="n">cur_node</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">pstr_node</span> <span class="n">tmp_node</span><span class="p">;</span></span>
+<span class="code-line">    <span class="k">while</span> <span class="p">(</span><span class="n">cur_node</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="n">tmp_node</span> <span class="o">=</span> <span class="n">cur_node</span><span class="p">;</span></span>
+<span class="code-line">        <span class="n">cur_node</span> <span class="o">=</span> <span class="n">tmp_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span></span>
+<span class="code-line">        <span class="n">free</span><span class="p">(</span><span class="n">tmp_node</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span></span>
+<span class="code-line">        <span class="n">free</span><span class="p">(</span><span class="n">tmp_node</span><span class="p">);</span></span>
+<span class="code-line">    <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span class="code-line"><span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span></span>
+<span class="code-line">    <span class="kt">char</span> <span class="n">input_buffer</span><span class="p">[</span><span class="n">MAX_CHARS_PER_LINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span></span>
+<span class="code-line">    <span class="kt">int</span> <span class="n">total</span><span class="p">;</span></span>
+<span class="code-line">    <span class="n">pstr_node</span> <span class="n">head</span> <span class="o">=</span> <span class="n">create_str_node</span><span class="p">(</span><span class="n">input_buffer</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;how many lines: &quot;</span><span class="p">);</span></span>
+<span class="code-line">    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">total</span><span class="p">);</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span></span>
+<span class="code-line">    <span class="kt">int</span> <span class="n">len</span><span class="p">;</span></span>
+<span class="code-line">    <span class="n">pstr_node</span> <span class="n">cur_node</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span></span>
+<span class="code-line">    <span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">total</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;line %d: &quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span></span>
+<span class="code-line">        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">input_buffer</span><span class="p">);</span></span>
+<span class="code-line">        <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">input_buffer</span><span class="p">);</span></span>
+<span class="code-line">        <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="n">MAX_CHARS_PER_LINE</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;max chars per line is %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">MAX_CHARS_PER_LINE</span><span class="p">);</span></span>
+<span class="code-line">            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span></span>
+<span class="code-line">        <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="n">pstr_node</span> <span class="n">new_node</span> <span class="o">=</span> <span class="n">create_str_node</span><span class="p">(</span><span class="n">input_buffer</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">input_buffer</span><span class="p">));</span></span>
+<span class="code-line">        <span class="k">if</span> <span class="p">(</span><span class="n">new_node</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span></span>
+<span class="code-line">        <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">next</span> <span class="o">=</span> <span class="n">new_node</span><span class="p">;</span></span>
+<span class="code-line">        <span class="n">cur_node</span> <span class="o">=</span> <span class="n">new_node</span><span class="p">;</span>       </span>
+<span class="code-line"></span>
+<span class="code-line">        <span class="n">i</span><span class="o">++</span><span class="p">;</span></span>
+<span class="code-line">    <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="n">cur_node</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span></span>
+<span class="code-line">    <span class="k">while</span> <span class="p">(</span><span class="n">cur_node</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="n">print_reversed</span><span class="p">(</span><span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span></span>
+<span class="code-line">        <span class="n">cur_node</span> <span class="o">=</span> <span class="n">cur_node</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span></span>
+<span class="code-line">    <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">if</span> <span class="p">(</span><span class="n">free_all</span><span class="p">(</span><span class="n">head</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;free all.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span></span>
+<span class="code-line">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></span>
+<span class="code-line">        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;some space is not free.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span></span>
+<span class="code-line">    <span class="p">}</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span></span>
+<span class="code-line"><span class="p">}</span></span>
+</pre></div>
 
-<div class="row" style="margin-bottom: -1.25em;">
-	<div class="small-12 columns text-center">
-		<div class="pagination-centered">
-			<ul class="pagination">
-				<li class="arrow unavailable"><a href="#">&larr; Previous</a></li>
-				<li class="current"><a href="http://henrychenv.github.io/index.html">1</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index2.html">2</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index3.html">3</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index4.html">4</a></li>
-				<li class="arrow"><a href="http://henrychenv.github.io/index2.html">Next &rarr;</a></li>
-			</ul>
-		</div>
+
+<p>结果：</p>
+<div class="highlight"><pre><span class="code-line">how many lines: 2</span>
+<span class="code-line">line 1: hello</span>
+<span class="code-line">line 2: world</span>
+<span class="code-line"></span>
+<span class="code-line">olleh</span>
+<span class="code-line">dlrow</span>
+<span class="code-line">free all.</span>
+</pre></div>
+
+
+<p>好久没写c语言了，写写开心下。</p>
+	<hr/>
+    <h6>
+        Written by 
+        <a href="http://henrychenv.github.io/author/henry-chen.html">
+            Henry Chen
+        </a> 
+        in <a href="http://henrychenv.github.io/category/essay.html">Essay</a> 
+        on 2016-03-24,
+        last updated on 2016-03-24.
+    </h6>
+</article>
+
+<hr/>
+<div class="row">
+	<div class="small-12 columns">
+		<h3>Comments</h3>
+		<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'spiritline';
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 	</div>
 </div>
-
 						</div>
 						<!-- End Main Content -->
 						<!-- Sidebar -->
