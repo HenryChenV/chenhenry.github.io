@@ -70,7 +70,7 @@
 							<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
 							<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 							<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
-							<li ><a href="http://henrychenv.github.io/category/system.html">System</a></li>
+							<li class="active"><a href="http://henrychenv.github.io/category/system.html">System</a></li>
 							<li ><a href="http://henrychenv.github.io/category/vim.html">VIM</a></li>
 
 						<li><label>Links</label></li>
@@ -117,7 +117,7 @@
 								<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
 								<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 								<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
-								<li ><a href="http://henrychenv.github.io/category/system.html">System</a></li>
+								<li class="active"><a href="http://henrychenv.github.io/category/system.html">System</a></li>
 								<li ><a href="http://henrychenv.github.io/category/vim.html">VIM</a></li>
 						</ul>
                         <ul class="right">                                                                                                                                           
@@ -131,125 +131,53 @@
 					<div class="row">
 						<!-- Main Content -->
 						<div class="medium-9 small-12 columns" role="content">
-
 <article>
-    <h3><a href="http://henrychenv.github.io/ted-embrace-the-near-win.html"><b>[TED] Embrace The Near Win</b></a></h3>
+    <h2><b>查看哪个程序占用了端口</b></h2>
+    <hr/>
     <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-01-20
-    </h6> 
-    <h6> 
+        <b>Date: </b>2016-04-14
  
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/english.html">
-            English
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/ted.html">TED
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/english.html">English
-        </a>
- 
- 
+        <b>Tags: </b> 
+        <a href="http://henrychenv.github.io/tag/system.html">system</a>
+,         <a href="http://henrychenv.github.io/tag/port.html">port</a>
     </h6>
-	<p>I feel so fortunate that my first job was working at the Museum of Modern ...</p>
-		<p class="continue"><a href="http://henrychenv.github.io/ted-embrace-the-near-win.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/january-chaos.html"><b>一月的混沌</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-01-02
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/essay.html">
-            Essay
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/chaos.html">chaos
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/life.html">life
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/thinking.html">thinking
-        </a>
- 
- 
-    </h6>
+    <hr/>
 	<div class="toc">
 <ul></ul>
 </div>
-<p>最近有点烦，烦的原因是我处在人类的一个很烦的进化阶段，不知道算不算进化了，人类本能的进化速度完全赶不上人类社会的进化速度，人类为了在社会中生存，必须按照一些人为规定进行活动，而这些规定往往和本能想背，现在的本能已经完全无法适应当今社会。读《自私的基因》感觉人就是个无意义的存在，和其他生物一样都是为了生存，所做的一切无非都是让基因延续下去，所谓的为了种族的生存大概就是这个意思吧。种族中存在变异 ...</p>
-		<p class="continue"><a href="http://henrychenv.github.io/january-chaos.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/note-for-build-website.html"><b>论坛搭建全记录</b></a></h3>
+<div class="highlight"><pre><span class="code-line">netstat -ntlp<span class="p">|</span>grep 8000</span>
+<span class="code-line">lsof -i:8000 搜索</span>
+<span class="code-line">ps -ef <span class="p">|</span>grep <span class="sb">`</span>netstat -ntlp<span class="p">|</span>grep 8000<span class="p">|</span>awk <span class="s1">&#39;{print $7}&#39;</span><span class="p">|</span>awk -F/ <span class="s1">&#39;{print $1}&#39;</span><span class="sb">`</span></span>
+</pre></div>
+	<hr/>
     <h6>
-        <b>Written by </b>
+        Written by 
         <a href="http://henrychenv.github.io/author/henry-chen.html">
             Henry Chen
-        </a>
-        <b>On </b>
-        2015-12-28
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/sysops.html">
-            SysOPS
         </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/centos7.html">centos7
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/nginx.html">nginx
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/uwsgi.html">uwsgi
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/mysql.html">mysql
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
- 
- 
+        in <a href="http://henrychenv.github.io/category/system.html">System</a> 
+        on 2016-04-14,
+        last updated on 2016-04-14.
     </h6>
-	<p>搭建论坛的简单记录,搭了个论坛玩。以下文字时写给自己看的，首要目的是记录，其次才是得瑟。会有些啰嗦，因为不想写那种从头到位都很顺利跟说明书似的帖子。</p>
-		<p class="continue"><a href="http://henrychenv.github.io/note-for-build-website.html">Continue reading &raquo;</a></p>
 </article>
-<hr />
 
-<div class="row" style="margin-bottom: -1.25em;">
-	<div class="small-12 columns text-center">
-		<div class="pagination-centered">
-			<ul class="pagination">
-				<li class="arrow"><a href="http://henrychenv.github.io/index3.html">&larr; Previous</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index.html">1</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index2.html">2</a></li>
-				<li class=""><a href="http://henrychenv.github.io/index3.html">3</a></li>
-				<li class="current"><a href="http://henrychenv.github.io/index4.html">4</a></li>
-				<li class="arrow unavailable"><a href="#">Next &rarr;</a></li>
-			</ul>
-		</div>
+<hr/>
+<div class="row">
+	<div class="small-12 columns">
+		<h3>Comments</h3>
+		<div id="disqus_thread"></div>
+		<script type="text/javascript">
+			var disqus_shortname = 'spiritline';
+			(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 	</div>
 </div>
-
 						</div>
 						<!-- End Main Content -->
 						<!-- Sidebar -->

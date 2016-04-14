@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://henrychenv.github.io/" rel="alternate"></link><link href="http://henrychenv.github.io/feeds/system.atom.xml" rel="self"></link><id>http://henrychenv.github.io/</id><updated>2016-01-31T18:57:00+08:00</updated><entry><title>软链接，硬链接</title><link href="http://henrychenv.github.io/soft-and-hard-link.html" rel="alternate"></link><updated>2016-01-31T18:57:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-01-30:soft-and-hard-link.html</id><summary type="html">&lt;div class="toc"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://henrychenv.github.io/" rel="alternate"></link><link href="http://henrychenv.github.io/feeds/system.atom.xml" rel="self"></link><id>http://henrychenv.github.io/</id><updated>2016-04-14T11:43:00+08:00</updated><entry><title>查看哪个程序占用了端口</title><link href="http://henrychenv.github.io/port-already-in-use.html" rel="alternate"></link><updated>2016-04-14T11:43:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-04-14:port-already-in-use.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;ul&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;netstat -ntlp&lt;span class="p"&gt;|&lt;/span&gt;grep 8000&lt;/span&gt;
+&lt;span class="code-line"&gt;lsof -i:8000 搜索&lt;/span&gt;
+&lt;span class="code-line"&gt;ps -ef &lt;span class="p"&gt;|&lt;/span&gt;grep &lt;span class="sb"&gt;`&lt;/span&gt;netstat -ntlp&lt;span class="p"&gt;|&lt;/span&gt;grep 8000&lt;span class="p"&gt;|&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;{print $7}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;awk -F/ &lt;span class="s1"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="system"></category><category term="port"></category></entry><entry><title>软链接，硬链接</title><link href="http://henrychenv.github.io/soft-and-hard-link.html" rel="alternate"></link><updated>2016-01-31T18:57:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-01-30:soft-and-hard-link.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#_1"&gt;概论&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#_2"&gt;笔记&lt;/a&gt;&lt;ul&gt;
