@@ -3,7 +3,7 @@
 &lt;ul&gt;&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;netstat -ntlp&lt;span class="p"&gt;|&lt;/span&gt;grep 8000&lt;/span&gt;
-&lt;span class="code-line"&gt;lsof -i:8000 搜索&lt;/span&gt;
+&lt;span class="code-line"&gt;lsof -i:8000 &lt;/span&gt;
 &lt;span class="code-line"&gt;ps -ef &lt;span class="p"&gt;|&lt;/span&gt;grep &lt;span class="sb"&gt;`&lt;/span&gt;netstat -ntlp&lt;span class="p"&gt;|&lt;/span&gt;grep 8000&lt;span class="p"&gt;|&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;{print $7}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;awk -F/ &lt;span class="s1"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="system"></category><category term="port"></category></entry><entry><title>软链接，硬链接</title><link href="http://henrychenv.github.io/soft-and-hard-link.html" rel="alternate"></link><updated>2016-01-31T18:57:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-01-30:soft-and-hard-link.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;
