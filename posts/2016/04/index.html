@@ -91,9 +91,7 @@
 
 
 						<li><label>Monthly Archives</label></li>
-									<li><a href="/posts/2016/03/index.html">三月 2016 (1)</a></li>
-									<li><a href="/posts/2016/02/index.html">二月 2016 (6)</a></li>
-									<li><a href="/posts/2015/12/index.html">十二月 2015 (1)</a></li>
+									<li><a href="/posts/2016/04/index.html">四月 2016 (1)</a></li>
 
 						<li><label>Social</label></li>
 							<li><a href="http://weibo.com/dulihandong">Weibo</a></li>
@@ -131,243 +129,37 @@
 						<div class="medium-9 small-12 columns" role="content">
 							<div class="row">
 								<div class="small-12 columns">
-									<h2>Tag: 'python'</h2>
+									<h2>Period Archives</h2>
 								</div>
 							</div>
-
-<article>
-    <h3><a href="http://henrychenv.github.io/python-design-pattern-singleton.html"><b>实现 Python 单例模式的几种方式</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-03-13
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/design-pattern.html">design-pattern
-        </a>
- 
- 
-    </h6>
-	<div class="toc">
-<ul>
-<li><a href="#_1">利用模块只会导入一次的特性</a></li>
-<li><a href="#__metaclass____call__">利用__metaclass__和__call__</a></li>
-<li><a href="#metaclass-new">利用 metaclass 和 new</a></li>
-</ul>
-</div>
-<h3 id="_1">利用模块只会导入一次的特性</h3>
-<p>在python中，多次导入某个模块，其实只会在第一次产生导入的动作
-World.py:  </p>
-<div class="highlight"><pre><span class="code-line"><span class="c1"># coding=utf-8</span></span>
-<span class="code-line"></span>
-<span class="code-line"><span class="sd">&quot;&quot;&quot;</span></span>
-<span class="code-line"><span class="sd">利用python模块只会导入一次的特性写单例模式 ...</span></span></pre></div>
-		<p class="continue"><a href="http://henrychenv.github.io/python-design-pattern-singleton.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-configparser.html"><b>用ConfigParser解析配置项</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-11
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/reading-notes.html">reading-notes
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/configparser.html">configparser
-        </a>
- 
- 
-    </h6>
-	<p>python提供了现成的配置文件解析标准库ConfigParser,<br />
-使用方法不做详细介绍,只是记录下他的配置项查找规则,避免踩坑。</p>
-<div class="toc">
-<ul>
-<li><a href="#_1">查找顺序</a></li>
-<li><a href="#_2">测试代码</a></li>
-</ul>
-</div>
-<h3 id="_1">查找顺序</h3>
-<p>使用时得注意点他的参数查找顺序,特别提防构造函数中的defaults和get方法中的vars参数，<br />
-配置项查找规则如下:</p>
-<ol>
-<li>找不到section，raise ConfigParser.NoSectionError</li>
-<li>vars ...</li></ol>
-		<p class="continue"><a href="http://henrychenv.github.io/python-configparser.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-collections-counter.html"><b>用Counter计数</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-11
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/reading-notes.html">reading-notes
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/collections.html">collections
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/counter.html">counter
-        </a>
- 
- 
-    </h6>
-	<div class="toc">
-<ul></ul>
-</div>
-<p>如果想对一个list中的元素计数怎么办，<br />
-比如: 统计[2332, 1232, 2332, 3321, 9921]中每个元素的个数<br />
-今天不小心看到个不错的东西，记录下: 可以使用collections.Counter</p>
-<div class="highlight"><pre><span class="code-line"><span class="kn">from</span> <span class="nn">collections ...</span></span></pre></div>
-		<p class="continue"><a href="http://henrychenv.github.io/python-collections-counter.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-build-in-function.html"><b>Python中的build-in function</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-11
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/build-in-function.html">build-in-function
-        </a>
- 
- 
-    </h6>
-	<p>python中build-in function的笔记，持续更新</p>
-<div class="toc">
-<ul>
-<li><a href="#sorted">sorted</a><ul>
-<li><a href="#_1">普通玩法</a></li>
-<li><a href="#list">多维list</a></li>
-<li><a href="#list_1">字典中的list</a></li>
-<li><a href="#list_2">List中的字典</a></li>
-</ul>
-</li>
-<li><a href="#map">map</a></li>
-<li><a href="#zip">zip</a></li>
-</ul>
-</div>
-<h2 id="sorted">sorted</h2>
-<p>sorted(iterable, cmp=None ...</p>
-		<p class="continue"><a href="http://henrychenv.github.io/python-build-in-function.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-<article>
-    <h3><a href="http://henrychenv.github.io/python-if-none.html"><b>python中判断一个实例是否为空</b></a></h3>
-    <h6>
-        <b>Written by </b>
-        <a href="http://henrychenv.github.io/author/henry-chen.html">
-            Henry Chen
-        </a>
-        <b>On </b>
-        2016-02-10
-    </h6> 
-    <h6> 
- 
-        <b>In </b> 
-        <a href="http://henrychenv.github.io/category/python.html">
-            Python
-        </a> 
-        <b>Tags:</b> 
-        <a href="http://henrychenv.github.io/tag/reading-notes.html">reading-notes
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/python.html">python
-        </a>
-,  
-        <a href="http://henrychenv.github.io/tag/build-in-function.html">build-in-function
-        </a>
- 
- 
-    </h6>
-	<div class="toc">
-<ul></ul>
-</div>
-<p>在python中，通过如下代码判断一个对象是否为空时</p>
-<div class="highlight"><pre><span class="code-line"><span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">()</span></span>
-<span class="code-line"><span class="k">if</span> <span class="n">a</span><span class="p">:</span></span>
-<span class="code-line">    <span class="k">print</span> <span class="s2">&quot;not empty&quot;</span></span>
-<span class="code-line"><span class="k">else</span><span class="p">:</span></span>
-<span class="code-line">    <span class="k">print</span> <span class="s2">&quot;empty&quot;</span></span>
-</pre></div>
-
-
-<hr />
-<p>如果A实现了__nonzero__会调用__nonzero__方法,</p>
-<div class="highlight"><pre><span class="code-line"><span class="k">class</span> <span class="nc">A ...</span></span></pre></div>
-		<p class="continue"><a href="http://henrychenv.github.io/python-if-none.html">Continue reading &raquo;</a></p>
-</article>
-<hr />
-
-<div class="row" style="margin-bottom: -1.25em;">
-	<div class="small-12 columns text-center">
-		<div class="pagination-centered">
-			<ul class="pagination">
-				<li class="arrow unavailable"><a href="#">&larr; Previous</a></li>
-				<li class="current"><a href="http://henrychenv.github.io/tag/python.html">1</a></li>
-				<li class=""><a href="http://henrychenv.github.io/tag/python2.html">2</a></li>
-				<li class="arrow"><a href="http://henrychenv.github.io/tag/python2.html">Next &rarr;</a></li>
-			</ul>
-		</div>
+<div class="row">
+	<div class="small-10 columns small-centered">
+			<div class="row archive-year">
+				<div class="small-2 columns text-left">
+          <a href="/posts/2016/index.html">
+            <h3>2016</h3>
+          </a>
+				</div>
+			</div>
+      <div class="row archive-month ">
+        <div class="small-2 columns text-right">
+          <a href="/posts/2016/04/index.html">
+            <h5><b>四月</b></h5>
+          </a>
+        </div>
+      </div>
+				<div class="row archive-entry">
+					<div class="small-2 columns text-right">
+            <a href="/posts/2016/04/14/index.html">
+              <h5> 4月 14</h5>
+            </a>
+					</div>
+					<div class="small-10 columns">
+						<h5><a href="http://henrychenv.github.io/mysql-edit-column.html">MySQL修改字段</a></h5>
+					</div>
+				</div>
 	</div>
-</div>
-
-						</div>
+</div>						</div>
 						<!-- End Main Content -->
 						<!-- Sidebar -->
 						<aside class="medium-3 hide-for-small-only columns">
@@ -535,38 +327,19 @@ World.py:  </p>
 
                             <div class="panel">
                                 <a href="http://henrychenv.github.io/archives.html">
-                                    <h5>Archives (8)</h5>
+                                    <h5>Archives (1)</h5>
                                 </a>
                                 <ul class="side-nav"> 
                                     <li>
                                         <a href="/posts/2016/index.html">
-                                            2016 (7)
+                                            2016 (1)
                                         </a>
                                     </li> 
                                     <li>
                                         <ul class="side-nav-2">
                                             <li>
-                                                <a href="/posts/2016/03/index.html">
-                                                    三月 2016 (1)
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/posts/2016/02/index.html">
-                                                    二月 2016 (6)
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="/posts/2016/index.html">
-                                            2015 (1)
-                                        </a>
-                                    </li> 
-                                    <li>
-                                        <ul class="side-nav-2">
-                                            <li>
-                                                <a href="/posts/2015/12/index.html">
-                                                    十二月 2015 (1)
+                                                <a href="/posts/2016/04/index.html">
+                                                    四月 2016 (1)
                                                 </a>
                                             </li>
                                         </ul>
