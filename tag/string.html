@@ -69,7 +69,7 @@
 							<li ><a href="http://henrychenv.github.io/category/essay.html">Essay</a></li>
 							<li ><a href="http://henrychenv.github.io/category/front-end.html">Front-End</a></li>
 							<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
-							<li class="active"><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
+							<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 							<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
 							<li ><a href="http://henrychenv.github.io/category/system.html">System</a></li>
 							<li ><a href="http://henrychenv.github.io/category/vim.html">VIM</a></li>
@@ -93,11 +93,6 @@
 
 						<li><label>Monthly Archives</label></li>
 									<li><a href="/posts/2016/05/index.html">May 2016 (1)</a></li>
-									<li><a href="/posts/2016/04/index.html">April 2016 (3)</a></li>
-									<li><a href="/posts/2016/03/index.html">March 2016 (2)</a></li>
-									<li><a href="/posts/2016/02/index.html">February 2016 (8)</a></li>
-									<li><a href="/posts/2016/01/index.html">January 2016 (5)</a></li>
-									<li><a href="/posts/2015/12/index.html">December 2015 (1)</a></li>
 
 						<li><label>Social</label></li>
 							<li><a href="http://weibo.com/dulihandong">Weibo</a></li>
@@ -118,7 +113,7 @@
 								<li ><a href="http://henrychenv.github.io/category/essay.html">Essay</a></li>
 								<li ><a href="http://henrychenv.github.io/category/front-end.html">Front-End</a></li>
 								<li ><a href="http://henrychenv.github.io/category/mysql.html">MySQL</a></li>
-								<li class="active"><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
+								<li ><a href="http://henrychenv.github.io/category/python.html">Python</a></li>
 								<li ><a href="http://henrychenv.github.io/category/sysops.html">SysOPS</a></li>
 								<li ><a href="http://henrychenv.github.io/category/system.html">System</a></li>
 								<li ><a href="http://henrychenv.github.io/category/vim.html">VIM</a></li>
@@ -134,79 +129,56 @@
 					<div class="row">
 						<!-- Main Content -->
 						<div class="medium-9 small-12 columns" role="content">
+							<div class="row">
+								<div class="small-12 columns">
+									<h2>Tag: 'string'</h2>
+								</div>
+							</div>
+
 <article>
-    <h2><b>fastpy 源码笔记</b></h2>
-    <hr/>
+    <h3><a href="http://henrychenv.github.io/python-string-concat.html"><b>python中的字符串连接效率</b></a></h3>
     <h6>
-        <b>Date: </b>2016-03-12
- 
-        <b>Tags: </b> 
-        <a href="http://henrychenv.github.io/tag/python.html">python</a>
-,         <a href="http://henrychenv.github.io/tag/web.html">web</a>
-,         <a href="http://henrychenv.github.io/tag/notes.html">notes</a>
-    </h6>
-    <hr/>
-	<div class="toc">
-<ul>
-<li><a href="#_1">多进程进程数量</a></li>
-<li><a href="#fd">文件描述符fd</a></li>
-<li><a href="#epoll">epoll</a></li>
-<li><a href="#gevent">协程 gevent</a></li>
-<li><a href="#http-multipartform-data">HTTP multipart/form-data</a></li>
-</ul>
-</div>
-<h3 id="_1">多进程进程数量</h3>
-<p>进程数一般等于cpu的核数</p>
-<h3 id="fd">文件描述符fd</h3>
-<p>文件描述符（File
-descriptor）是计算机科学中的一个术语，是一个用于表述指向文件的引用的抽象化概念。</p>
-<p>文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。但是文件描述符这一概念往往只适用于UNIX、Linux这样的操作系统。</p>
-<h3 id="epoll">epoll</h3>
-<p><a href="https://segmentfault.com/a/1190000003063859">Linux IO模式及 select、poll、epoll详解</a></p>
-<p><a href="http://www.cnblogs.com/Anker/p/3263780.html">IO多路复用之epoll总结</a></p>
-<p><a href="http://www.cnblogs.com/OnlyXP/archive/2007/08/10/851222.html">epoll精髓</a></p>
-<p><a href="https://segmentfault.com/a/1190000003063859#articleHeader21">Linux IO模式及select、poll、epoll详解</a> (the best)</p>
-<p><a href="http://www.cppblog.com/yangsf5/archive/2009/03/12/76353.aspx">epoll的各个事件触发条件测试</a></p>
-<blockquote>
-<p>1、listen fd，有新连接请求，触发EPOLLIN。<br />
-2、对端发送普通数据，触发EPOLLIN。<br />
-3、带外数据，只触发EPOLLPRI。<br />
-4、对端正常关闭（程序里close()，shell下kill或ctr+c），触发EPOLLIN和EPOLLRDHUP，但是不触发EPOLLERR和EPOLLHUP。 关于这点，以前一直以为会触发EPOLLERR或者EPOLLHUP。 再man epoll_ctl看下后两个事件的说明，这两个应该是本端（server端）出错才触发的。<br />
-5、对端异常断开连接（只测了拔网线），没触发任何事件。  </p>
-</blockquote>
-<h3 id="gevent">协程 gevent</h3>
-<p><a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001407503089986d175822da68d4d6685fbe849a0e0ca35000">gevent 廖雪峰的官方网站</a></p>
-<h3 id="http-multipartform-data">HTTP multipart/form-data</h3>
-<p><a href="http://blog.csdn.net/five3/article/details/7181521">HTTP协议之multipart/form-data请求分析</a></p>
-	<hr/>
-    <h6>
-        Written by 
+        <b>Written by </b>
         <a href="http://henrychenv.github.io/author/henry-chen.html">
             Henry Chen
+        </a>
+        <b>On </b>
+        2016-05-08
+    </h6> 
+    <h6> 
+ 
+        <b>In </b> 
+        <a href="http://henrychenv.github.io/category/python.html">
+            Python
         </a> 
-        in <a href="http://henrychenv.github.io/category/python.html">Python</a> 
-        on 2016-03-12,
-        last updated on 2016-03-12.
+        <b>Tags:</b> 
+        <a href="http://henrychenv.github.io/tag/python.html">python
+        </a>
+,  
+        <a href="http://henrychenv.github.io/tag/string.html">string
+        </a>
+,  
+        <a href="http://henrychenv.github.io/tag/concat.html">concat
+        </a>
+ 
+ 
     </h6>
-</article>
-
-<hr/>
-<div class="row">
-	<div class="small-12 columns">
-		<h3>Comments</h3>
-		<div id="disqus_thread"></div>
-		<script type="text/javascript">
-			var disqus_shortname = 'spiritline';
-			(function() {
-				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			})();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-	</div>
+	<div class="toc">
+<ul></ul>
 </div>
+<p>之前有人跟我说，python中不要用+连接字符串，效率很低，但问到原因，没解释清楚，表示不服，于是自己亲测了下</p>
+<div class="highlight"><pre><span class="code-line"><span class="c1"># -*- coding=utf-8 -*-</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="sd">&quot;&quot;&quot;</span></span>
+<span class="code-line"><span class="sd">字符串性能测试</span></span>
+<span class="code-line"><span class="sd">&quot;&quot;&quot;</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time ...</span></span></pre></div>
+		<p class="continue"><a href="http://henrychenv.github.io/python-string-concat.html">Continue reading &raquo;</a></p>
+</article>
+<hr />
+
+
 						</div>
 						<!-- End Main Content -->
 						<!-- Sidebar -->
@@ -395,12 +367,12 @@ descriptor）是计算机科学中的一个术语，是一个用于表述指向�
 
                             <div class="panel">
                                 <a href="http://henrychenv.github.io/archives.html">
-                                    <h5>Archives (20)</h5>
+                                    <h5>Archives (1)</h5>
                                 </a>
                                 <ul class="side-nav"> 
                                     <li>
                                         <a href="/posts/2016/index.html">
-                                            2016 (19)
+                                            2016 (1)
                                         </a>
                                     </li> 
                                     <li>
@@ -408,40 +380,6 @@ descriptor）是计算机科学中的一个术语，是一个用于表述指向�
                                             <li>
                                                 <a href="/posts/2016/05/index.html">
                                                     May 2016 (1)
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/posts/2016/04/index.html">
-                                                    April 2016 (3)
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/posts/2016/03/index.html">
-                                                    March 2016 (2)
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/posts/2016/02/index.html">
-                                                    February 2016 (8)
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/posts/2016/01/index.html">
-                                                    January 2016 (5)
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="/posts/2016/index.html">
-                                            2015 (1)
-                                        </a>
-                                    </li> 
-                                    <li>
-                                        <ul class="side-nav-2">
-                                            <li>
-                                                <a href="/posts/2015/12/index.html">
-                                                    December 2015 (1)
                                                 </a>
                                             </li>
                                         </ul>
