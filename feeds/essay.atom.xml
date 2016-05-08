@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://henrychenv.github.io/" rel="alternate"></link><link href="http://henrychenv.github.io/feeds/essay.atom.xml" rel="self"></link><id>http://henrychenv.github.io/</id><updated>2016-03-24T22:15:00+08:00</updated><entry><title>反序输入指定行数的字符串</title><link href="http://henrychenv.github.io/just-for-fun-c.html" rel="alternate"></link><updated>2016-03-24T22:15:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-03-24:just-for-fun-c.html</id><summary type="html">&lt;div class="toc"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://henrychenv.github.io/" rel="alternate"></link><link href="http://henrychenv.github.io/feeds/essay.atom.xml" rel="self"></link><id>http://henrychenv.github.io/</id><updated>2016-04-25T00:03:00+08:00</updated><entry><title>TODO-STUDY</title><link href="http://henrychenv.github.io/todo-list.html" rel="alternate"></link><updated>2016-04-25T00:03:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-04-25:todo-list.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;ul&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;最近开始堕落了，虽然因为天气的原因，整个人不太舒服，但这也不能成为理由。&lt;br /&gt;
+所以将要做没做的事情列下来，提醒自己:  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;python导入模块的细节, 整个import 过程都干了什么, 结合源码剖析(2016-04-24);&lt;/li&gt;
+&lt;li&gt;python GIL细节, 结合源码剖析 (2016-04-24)&lt;/li&gt;
+&lt;li&gt;epoll总结的博客(这个自己模仿fastpy写个server,这个是长期计划)  &lt;/li&gt;
+&lt;li&gt;MySQL继续学习(高性能MySQL) (2016-04-24)&lt;/li&gt;
+&lt;li&gt;REDIS学习 (2016-04-24)&lt;/li&gt;
+&lt;li&gt;requests源码 (2016-04-24)&lt;/li&gt;
+&lt;li&gt;tornado源码 (2016-05-01)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/faif/python-patterns"&gt;python设计模式&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="todo"></category><category term="study"></category></entry><entry><title>反序输入指定行数的字符串</title><link href="http://henrychenv.github.io/just-for-fun-c.html" rel="alternate"></link><updated>2016-03-24T22:15:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-03-24:just-for-fun-c.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;&lt;/ul&gt;
 &lt;/div&gt;
 &lt;p&gt;好久没写c语言了，今天帮一同学写个例子&lt;br /&gt;
