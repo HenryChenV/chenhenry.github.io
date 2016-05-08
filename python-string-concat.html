@@ -429,13 +429,18 @@
 
 
 <p>略去检查部分，主要逻辑中，可以处理多个字符串拼接，先计算出多个字符串拼接成的新字符串所需内存大小，然后挨个拷贝进去。<br />
-在多个字符串拼接时，+无疑会耗费更多的内存。</p>
+在多个字符串拼接时，+无疑会耗费更多的内存，而且+也会创建更多的PyStringObject，而这些PyStringObject大部分是临时变量，据说会在垃圾回收上弄出点麻烦。<br />
+网上所说的+效率低，个人认为不是慢在+这个操作上，而是for循环本身的问题，因为网上的代码都是在for循环中拼接list中的字符串的。我为了防止在for上出现效率拉低的情况，在测试的代码中故意没有写for，而是傻傻的一个一个写上去，然后相加，如果用list加上for的方式写，效率会低，但我认为不是因为+操作的问题，是因为for循环本身的效率问题，python中也提供了很多方式增加for循环的效率，比如列表解析和生成器表达式</p>
 <hr />
 <p>总结:  </p>
 <ol>
 <li>如果拼接字符串较少，可以用+，如果拼接字符串较多，无论从时间还是空间角度看，都得用join</li>
-<li>说join的效率高于+，其实说的是从内存角度说的，随着拼接字符串数量的上升，+会耗费更多的内存</li>
+<li>说join的效率高于+，其实说的是从内存角度说的，随着拼接字符串数量的上升，+会耗费更多的内存，创建更多的临时变量(仅用于暂存当前的结果，和下一个值相加)，对垃圾回收也会带来麻烦</li>
+<li>如果对list中的字符串进行拼接，请用join，比for循环加上+的效率高很多</li>
+<li>如果只是2个字符串拼接，请用+，因为此时不会产生临时的PyStringObject</li>
 </ol>
+<hr />
+<p>这哥们的测试也挺靠谱,结论也不迷信: <a href="https://blog.huhamhire.com/viewpost-966.html">使用 + 与 join 连接字符串的性能区别</a></p>
 	<hr/>
     <h6>
         Written by 
@@ -484,18 +489,13 @@
                                 <a href="http://henrychenv.github.io/tags.html"><h5>Tags</h5></a>
 								<ul class="tag-cloud">
                                     <li>
+                                        <a href="/tag/uwsgi.html" class="tag-4"> 
+                                            uwsgi 
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/tag/system.html" class="tag-3"> 
                                             system 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/theme.html" class="tag-4"> 
-                                            theme 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/dream.html" class="tag-4"> 
-                                            dream 
                                         </a>
                                     </li>
                                     <li>
@@ -504,18 +504,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/tag/ted.html" class="tag-3"> 
-                                            ted 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/uwsgi.html" class="tag-4"> 
-                                            uwsgi 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/mysql.html" class="tag-2"> 
-                                            mysql 
+                                        <a href="/tag/blog.html" class="tag-4"> 
+                                            blog 
                                         </a>
                                     </li>
                                     <li>
@@ -524,18 +514,8 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/tag/blog.html" class="tag-4"> 
-                                            blog 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/soft-link.html" class="tag-4"> 
-                                            soft-link 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/port.html" class="tag-4"> 
-                                            port 
+                                        <a href="/tag/collections.html" class="tag-4"> 
+                                            collections 
                                         </a>
                                     </li>
                                     <li>
@@ -544,98 +524,13 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/tag/vim.html" class="tag-4"> 
-                                            vim 
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="/tag/build-in-function.html" class="tag-3"> 
                                             build-in-function 
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/tag/string.html" class="tag-4"> 
-                                            string 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/work.html" class="tag-4"> 
-                                            work 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/python.html" class="tag-1"> 
-                                            python 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/front-end.html" class="tag-4"> 
-                                            front-end 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/configparser.html" class="tag-4"> 
-                                            configparser 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/c.html" class="tag-4"> 
-                                            c 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/centos7.html" class="tag-4"> 
-                                            centos7 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/chaos.html" class="tag-4"> 
-                                            chaos 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/reading-notes.html" class="tag-1"> 
-                                            reading-notes 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/fun.html" class="tag-2"> 
-                                            fun 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/concat.html" class="tag-4"> 
-                                            concat 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/thinking.html" class="tag-4"> 
-                                            thinking 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/english.html" class="tag-4"> 
-                                            English 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/hard-link.html" class="tag-4"> 
-                                            hard-link 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/design-pattern.html" class="tag-4"> 
-                                            design-pattern 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/collections.html" class="tag-4"> 
-                                            collections 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/tag/nginx.html" class="tag-4"> 
-                                            nginx 
+                                        <a href="/tag/dream.html" class="tag-4"> 
+                                            dream 
                                         </a>
                                     </li>
                                     <li>
@@ -644,8 +539,118 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/tag/english.html" class="tag-4"> 
+                                            English 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/string.html" class="tag-4"> 
+                                            string 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/c.html" class="tag-4"> 
+                                            c 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/design-pattern.html" class="tag-4"> 
+                                            design-pattern 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/python.html" class="tag-1"> 
+                                            python 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/work.html" class="tag-4"> 
+                                            work 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/concat.html" class="tag-4"> 
+                                            concat 
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="/tag/counter.html" class="tag-4"> 
                                             counter 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/theme.html" class="tag-4"> 
+                                            theme 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/ted.html" class="tag-3"> 
+                                            ted 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/vim.html" class="tag-4"> 
+                                            vim 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/nginx.html" class="tag-4"> 
+                                            nginx 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/thinking.html" class="tag-4"> 
+                                            thinking 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/front-end.html" class="tag-4"> 
+                                            front-end 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/chaos.html" class="tag-4"> 
+                                            chaos 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/fun.html" class="tag-2"> 
+                                            fun 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/reading-notes.html" class="tag-1"> 
+                                            reading-notes 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/configparser.html" class="tag-4"> 
+                                            configparser 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/port.html" class="tag-4"> 
+                                            port 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/mysql.html" class="tag-2"> 
+                                            mysql 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/soft-link.html" class="tag-4"> 
+                                            soft-link 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/hard-link.html" class="tag-4"> 
+                                            hard-link 
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/tag/centos7.html" class="tag-4"> 
+                                            centos7 
                                         </a>
                                     </li>
 								</ul>
