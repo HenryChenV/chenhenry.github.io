@@ -1,5 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://henrychenv.github.io/" rel="alternate"></link><link href="http://henrychenv.github.io/feeds/all.atom.xml" rel="self"></link><id>http://henrychenv.github.io/</id><updated>2016-05-08T20:44:00+08:00</updated><entry><title>python中的字符串连接效率</title><link href="http://henrychenv.github.io/python-string-concat.html" rel="alternate"></link><updated>2016-05-08T20:44:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-05-08:python-string-concat.html</id><summary type="html">&lt;div class="toc"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://henrychenv.github.io/" rel="alternate"></link><link href="http://henrychenv.github.io/feeds/all.atom.xml" rel="self"></link><id>http://henrychenv.github.io/</id><updated>2016-05-14T21:23:00+08:00</updated><entry><title>Mac OS 环境配置</title><link href="http://henrychenv.github.io/mac-env-settings.html" rel="alternate"></link><updated>2016-05-14T21:23:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-05-14:mac-env-settings.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#mac-os"&gt;Mac OS 系统配置&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#_1"&gt;触摸板&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#_2"&gt;轻点来点按&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#_3"&gt;三指拖移&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ssh"&gt;ssh远程登录&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#_4"&gt;开发环境配置&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#homebrew"&gt;homebrew&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#terminal"&gt;terminal 颜色&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ls"&gt;ls颜色&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#grep"&gt;grep颜色&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#vim"&gt;vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mysql"&gt;MySQL(后端开发少不了)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#git"&gt;git&amp;amp;&amp;amp;补全&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#virtualenv"&gt;virtualenv&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#python"&gt;python&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#_5"&gt;工具&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#vmware-fusion"&gt;vmware fusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;新入职，公司发了新mac, 开心, 但比较麻烦的环境配置, 不过总体来说还是挺开心的.  &lt;/p&gt;
+&lt;p&gt;这里只是对自己的环境配置做个记录, 下回再来个新mac就不用向这么多了。  &lt;/p&gt;
+&lt;h2 id="mac-os"&gt;Mac OS 系统配置&lt;/h2&gt;
+&lt;h3 id="_1"&gt;触摸板&lt;/h3&gt;
+&lt;h4 id="_2"&gt;轻点来点按&lt;/h4&gt;
+&lt;p&gt;系统便好设置 -&amp;gt; 触摸板 -&amp;gt; 光标与点按 -&amp;gt; 轻点来点按
+&lt;img alt="轻点来点按" src="/static/images/mac-env/touchpad1.jpg" /&gt;&lt;/p&gt;
+&lt;h4 id="_3"&gt;三指拖移&lt;/h4&gt;
+&lt;p&gt;系统便好设置 -&amp;gt; 辅助功能 -&amp;gt; 鼠标与触摸板 -&amp;gt; 触控板选项 -&amp;gt; 启用拖移 -&amp;gt; 三指拖移
+&lt;img alt="三指拖移" src="/static/images/mac-env/touchpad2.jpg" /&gt;&lt;/p&gt;
+&lt;h3 id="ssh"&gt;ssh远程登录&lt;/h3&gt;
+&lt;p&gt;新的系统只能通过ssh登录到其他机器, 无法从其他机器ssh到自己的机器, 需要允许这个操作&lt;br /&gt;
+系统便好设置 -&amp;gt; 共享 -&amp;gt; 远程登录
+&lt;img alt="ssh远程登录" src="/static/images/mac-env/ssh.jpg" /&gt;&lt;/p&gt;
+&lt;h2 id="_4"&gt;开发环境配置&lt;/h2&gt;
+&lt;h3 id="homebrew"&gt;homebrew&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;/usr/bin/ruby -e &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="http://brew.sh/"&gt;参考&lt;/a&gt;&lt;br /&gt;
+brew的bin会安装到/usr/local/bin/下, 个人推荐用brew管理mac上的包,
+需要用什么包直接用brew装下, 比如python, git, 不要用mac自带的, 特别在Mac OS X 10.11.4 El Capitan之后&lt;br /&gt;
+之前可以用&lt;code&gt;brew versions pkg&lt;/code&gt;查看可安装的包的版本, 但新的brew提供了这种方式,&lt;br /&gt;
+先要&lt;code&gt;brew tap homebrew/versions&lt;/code&gt;, 然后用&lt;code&gt;brew search xxx&lt;/code&gt;的时候就能看到不同版本的包, 直接&lt;code&gt;brew install xxx-v.x&lt;/code&gt;就可以了&lt;/p&gt;
+&lt;h3 id="terminal"&gt;terminal 颜色&lt;/h3&gt;
+&lt;p&gt;&lt;a href="/static/downloads/mac-env/Blackboard-sp.terminal"&gt;配置文件&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="ls"&gt;ls颜色&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;通过Homebrew安装Coreutils&lt;br /&gt;
+brew install xz coreutils&lt;br /&gt;
+注：Coreutils并不依赖于xz，但它的源码是用xz格式压缩的，安装xz才能解压。  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成颜色定义文件&lt;br /&gt;
+&lt;code&gt;gdircolors --print-database &amp;gt; ~/.dir_colors&lt;/code&gt;&lt;br /&gt;
+gdircolor的作用就是设置ls命令使用的环境变量LS_COLORS（BSD是LSCOLORS），我们可以修改~/.dir_colors自定义文件的颜色，此文件中的注释已经包含各种颜色取值的说明。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在~/.bash_profile配置文件中加入以下代码&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;brew list &lt;span class="p"&gt;|&lt;/span&gt; grep coreutils &amp;gt; /dev/null &lt;span class="p"&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;brew --prefix coreutils&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;/libexec/gnubin:&lt;/span&gt;$&lt;span class="s2"&gt;PATH&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;ls -F --show-control-chars --color=auto&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;gdircolors -b $HOME/.dir_colors&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="http://blog.csdn.net/windows1989/article/details/8882642"&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="grep"&gt;grep颜色&lt;/h3&gt;
+&lt;p&gt;在~/.bash_profile配置文件中加上alias定义。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;grep --color&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; egrep&lt;span class="s1"&gt;&amp;#39;egrep --color&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; fgrep&lt;span class="s1"&gt;&amp;#39;fgrep --color&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="http://blog.csdn.net/windows1989/article/details/8882642"&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="vim"&gt;vim&lt;/h3&gt;
+&lt;p&gt;我的python ide&lt;br /&gt;
+直接用clne&lt;a href="https://github.com/HenryChenV/vimrc"&gt;github&lt;/a&gt;上的项目安装&lt;/p&gt;
+&lt;h3 id="mysql"&gt;MySQL(后端开发少不了)&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://dev.mysql.com/downloads/mysql/"&gt;下载地址&lt;/a&gt;&lt;br /&gt;
+双击安装，安装后会给出root用户密码, 最好记住, 不然又得绕一圈重置密码&lt;br /&gt;
+&lt;a href="http://blog.sina.com.cn/s/blog_9ea3a4b70101ihl3.html"&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="git"&gt;git&amp;amp;&amp;amp;补全&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;brew install bash &lt;/span&gt;
+&lt;span class="code-line"&gt;brew install bash-completion&lt;/span&gt;
+&lt;span class="code-line"&gt;brew install git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;先更新下bash, 然后安装不全, 然后用brew安装下git
+~/.bash_profile中加入  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -f &lt;span class="k"&gt;$(&lt;/span&gt;brew --prefix&lt;span class="k"&gt;)&lt;/span&gt;/etc/bash_completion &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;                               &lt;/span&gt;
+&lt;span class="code-line"&gt;. &lt;span class="k"&gt;$(&lt;/span&gt;brew --prefix&lt;span class="k"&gt;)&lt;/span&gt;/etc/bash_completion                                             &lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="k"&gt;fi&lt;/span&gt;  &lt;span class="o"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3 id="virtualenv"&gt;virtualenv&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;pip search virtualenv&lt;/span&gt;
+&lt;span class="code-line"&gt;sudo easy_install virtualenvwrapper &lt;/span&gt;
+&lt;span class="code-line"&gt;mkdir $HOME/.virtualenvs&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;~/.bash_profile中添加  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;WORKON_HOME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;$HOME/.virtualenvs&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="nb"&gt;source&lt;/span&gt; /usr/local/bin/virtualenvwrapper.sh&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="http://liuzhijun.iteye.com/blog/1872241"&gt;参考&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="python"&gt;python&lt;/h3&gt;
+&lt;p&gt;我的系统为Mac OS X 10.11.4 El Capitan, 系统在安全上做了些改动, 导致pip无法安装软件, 因为系统为了安全, 防止pip在某些目录下新建目录
+解决方法有2个, 一个是用上面的virtualenv, 
+另一个就是用brew安装python2.7.10。&lt;br /&gt;
+但是brew直接安装的是python2.7.11, 对python2.7.10的动态库不支持,
+没搞懂不支持为什么安装时候不自己重新编译个, 也许是少数吧,
+我刚好碰到了。这事解决方法也有两个, 一个是自己去编译安装2.7.11,
+也许能解决这个问题,
+但我怕又会引起其他的版本问题，索性直接用brew装2.7.10算了,但是brew不支持python的多版本,
+用brew安装python2.7.10的方法如下:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;brew uninstall python&lt;/span&gt;
+&lt;span class="code-line"&gt;brew edit python&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;修改:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;- url &amp;quot;https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz&amp;quot;  &lt;/span&gt;
+&lt;span class="code-line"&gt;+ url &amp;quot;https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz&amp;quot;   &lt;/span&gt;
+&lt;span class="code-line"&gt;- sha256 &amp;quot;82929b96fd6afc8da838b149107078c02fa1744b7e60999a8babbc0d3fa86fc6&amp;quot;  &lt;/span&gt;
+&lt;span class="code-line"&gt;+ sha256 &amp;quot;eda8ce6eec03e74991abb5384170e7c65fcd7522e409b8e83d7e6372add0f12a&amp;quot;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;最后&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;brew install python&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果在自己的库里面找不到，会去python官网找&lt;/p&gt;
+&lt;h2 id="_5"&gt;工具&lt;/h2&gt;
+&lt;h3 id="vmware-fusion"&gt;vmware fusion&lt;/h3&gt;</summary><category term="mac"></category><category term="env"></category></entry><entry><title>python中的字符串连接效率</title><link href="http://henrychenv.github.io/python-string-concat.html" rel="alternate"></link><updated>2016-05-08T20:44:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-05-08:python-string-concat.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;&lt;/ul&gt;
 &lt;/div&gt;
 &lt;p&gt;之前有人跟我说，python中不要用+连接字符串，效率很低，但问到原因，没解释清楚，表示不服，于是自己亲测了下&lt;/p&gt;
@@ -293,21 +448,7 @@
 &lt;li&gt;如果只是2个字符串拼接，请用+，因为此时不会产生临时的PyStringObject&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr /&gt;
-&lt;p&gt;这哥们的测试也挺靠谱,结论也不迷信: &lt;a href="https://blog.huhamhire.com/viewpost-966.html"&gt;使用 + 与 join 连接字符串的性能区别&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="string"></category><category term="concat"></category></entry><entry><title>TODO-STUDY</title><link href="http://henrychenv.github.io/todo-list.html" rel="alternate"></link><updated>2016-04-25T00:03:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-04-25:todo-list.html</id><summary type="html">&lt;div class="toc"&gt;
-&lt;ul&gt;&lt;/ul&gt;
-&lt;/div&gt;
-&lt;p&gt;最近开始堕落了，虽然因为天气的原因，整个人不太舒服，但这也不能成为理由。&lt;br /&gt;
-所以将要做没做的事情列下来，提醒自己:  &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;python导入模块的细节, 整个import 过程都干了什么, 结合源码剖析(2016-04-24);&lt;/li&gt;
-&lt;li&gt;python GIL细节, 结合源码剖析 (2016-04-24)&lt;/li&gt;
-&lt;li&gt;epoll总结的博客(这个自己模仿fastpy写个server,这个是长期计划)  &lt;/li&gt;
-&lt;li&gt;MySQL继续学习(高性能MySQL) (2016-04-24)&lt;/li&gt;
-&lt;li&gt;REDIS学习 (2016-04-24)&lt;/li&gt;
-&lt;li&gt;requests源码 (2016-04-24)&lt;/li&gt;
-&lt;li&gt;tornado源码 (2016-05-01)&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/faif/python-patterns"&gt;python设计模式&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="todo"></category><category term="study"></category></entry><entry><title>图标右上角显示红点</title><link href="http://henrychenv.github.io/red-point.html" rel="alternate"></link><updated>2016-04-14T20:29:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-04-14:red-point.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;p&gt;这哥们的测试也挺靠谱,结论也不迷信: &lt;a href="https://blog.huhamhire.com/viewpost-966.html"&gt;使用 + 与 join 连接字符串的性能区别&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="string"></category><category term="concat"></category></entry><entry><title>图标右上角显示红点</title><link href="http://henrychenv.github.io/red-point.html" rel="alternate"></link><updated>2016-04-14T20:29:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-04-14:red-point.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;&lt;/ul&gt;
 &lt;/div&gt;
 &lt;p&gt;其实我是想做后端的，其实我是得工作的，来吧，搞前端.&lt;br /&gt;
@@ -1496,7 +1637,7 @@ reverse: 是否反序  &lt;/p&gt;
 &lt;p&gt;之前vim的主题一直用的solorize的light背景，最近感觉这个背景有点亮，也可能是看腻了，想换个暗一点的背景。
 于是选择了molokai，很像sublime主题的一款主题，但发现选中时候，选中的部分看得不明显，于是做了些修改，主要是颜色方面的。&lt;br /&gt;
 颜色可以参考&lt;br /&gt;
-&lt;img alt="vim所有颜色" src="images/vim/vim-color.png" /&gt;&lt;/p&gt;
+&lt;img alt="vim所有颜色" src="static/images/vim/vim-color.png" /&gt;&lt;/p&gt;
 &lt;p&gt;我修改后的主题代码,new_molokai.vim:  &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="s2"&gt;&amp;quot; Vim color file&lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
@@ -1777,7 +1918,7 @@ reverse: 是否反序  &lt;/p&gt;
 &lt;h3 id="inode"&gt;inode&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;我们知道文件都有文件名与数据，这在 Linux 上被分成两个部分：用户数据 (user data) 与元数据 (metadata)。用户数据，即文件数据块 (data block)，数据块是记录文件真实内容的地方；而元数据则是文件的附加属性，如文件大小、创建时间、所有者等信息。在 Linux 中，元数据中的 inode 号（inode 是文件元数据的一部分但其并不包含文件名，inode 号即索引节点号）才是文件的唯一标识而非文件名。文件名仅是为了方便人们的记忆和使用，系统或程序通过 inode 号寻找正确的文件数据块。
-&lt;img alt="通过文件名打开文件" src="/images/sysops/find-file-by-filename.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="通过文件名打开文件" src="/static/images/sysops/find-file-by-filename.jpg" /&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# stat /home/harris/source/glibc-2.16.0.tar.xz &lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;File: /home/harris/source/glibc-2.16.0.tar.xz&lt;/span&gt;
@@ -1897,7 +2038,7 @@ reverse: 是否反序  &lt;/p&gt;
 &lt;li&gt;可以对文件或目录创建&lt;/li&gt;
 &lt;li&gt;删除soft link 不影响原文件，删除原文件soft link会变成死链&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="链接访问" src="/images/sysops/visit-soft-link.jpg" title="链接访问" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="链接访问" src="/static/images/sysops/visit-soft-link.jpg" title="链接访问" /&gt;&lt;/p&gt;
 &lt;h3 id="find"&gt;使用命令 find 查找软链接与硬链接&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;// 查找在路径 /home 下的文件 data.txt 的软链接&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# find /home -lname data.txt &lt;/span&gt;&lt;/span&gt;

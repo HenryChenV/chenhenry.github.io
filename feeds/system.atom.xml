@@ -31,7 +31,7 @@
 &lt;h3 id="inode"&gt;inode&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;p&gt;我们知道文件都有文件名与数据，这在 Linux 上被分成两个部分：用户数据 (user data) 与元数据 (metadata)。用户数据，即文件数据块 (data block)，数据块是记录文件真实内容的地方；而元数据则是文件的附加属性，如文件大小、创建时间、所有者等信息。在 Linux 中，元数据中的 inode 号（inode 是文件元数据的一部分但其并不包含文件名，inode 号即索引节点号）才是文件的唯一标识而非文件名。文件名仅是为了方便人们的记忆和使用，系统或程序通过 inode 号寻找正确的文件数据块。
-&lt;img alt="通过文件名打开文件" src="/images/sysops/find-file-by-filename.jpg" /&gt;&lt;/p&gt;
+&lt;img alt="通过文件名打开文件" src="/static/images/sysops/find-file-by-filename.jpg" /&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# stat /home/harris/source/glibc-2.16.0.tar.xz &lt;/span&gt;&lt;/span&gt;
 &lt;span class="code-line"&gt;File: /home/harris/source/glibc-2.16.0.tar.xz&lt;/span&gt;
@@ -151,7 +151,7 @@
 &lt;li&gt;可以对文件或目录创建&lt;/li&gt;
 &lt;li&gt;删除soft link 不影响原文件，删除原文件soft link会变成死链&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt="链接访问" src="/images/sysops/visit-soft-link.jpg" title="链接访问" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="链接访问" src="/static/images/sysops/visit-soft-link.jpg" title="链接访问" /&gt;&lt;/p&gt;
 &lt;h3 id="find"&gt;使用命令 find 查找软链接与硬链接&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;// 查找在路径 /home 下的文件 data.txt 的软链接&lt;/span&gt;
 &lt;span class="code-line"&gt;&lt;span class="c1"&gt;# find /home -lname data.txt &lt;/span&gt;&lt;/span&gt;
