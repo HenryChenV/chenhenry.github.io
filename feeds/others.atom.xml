@@ -24,6 +24,8 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#_5"&gt;工具&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#vmware-fusion"&gt;vmware fusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#macvim"&gt;MacVim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#haroopad"&gt;haroopad&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -154,4 +156,10 @@ gdircolor的作用就是设置ls命令使用的环境变量LS_COLORS（BSD是LSC
 
 &lt;p&gt;如果在自己的库里面找不到，会去python官网找&lt;/p&gt;
 &lt;h2 id="_5"&gt;工具&lt;/h2&gt;
-&lt;h3 id="vmware-fusion"&gt;vmware fusion&lt;/h3&gt;</summary><category term="mac"></category><category term="env"></category></entry></feed>
+&lt;h3 id="vmware-fusion"&gt;vmware fusion&lt;/h3&gt;
+&lt;p&gt;虚拟机必备&lt;/p&gt;
+&lt;h3 id="macvim"&gt;MacVim&lt;/h3&gt;
+&lt;p&gt;比linux上的vim更好用，目前看来是这样的&lt;/p&gt;
+&lt;h3 id="haroopad"&gt;haroopad&lt;/h3&gt;
+&lt;p&gt;markdown编辑器&lt;br /&gt;
+&lt;a href="/static/downloads/mac-env/Haroopad-2016-06-06-setting.json"&gt;配置文件&lt;/a&gt;&lt;/p&gt;</summary><category term="mac"></category><category term="env"></category></entry></feed>

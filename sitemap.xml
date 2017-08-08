@@ -5,28 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://henrychenv.github.io/</loc>
-<lastmod>2016-05-15T00:29:48-00:00</lastmod>
+<lastmod>2017-08-08T11:49:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://henrychenv.github.io/archives.html</loc>
-<lastmod>2016-05-15T00:29:48-00:00</lastmod>
+<lastmod>2017-08-08T11:49:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://henrychenv.github.io/tags.html</loc>
-<lastmod>2016-05-15T00:29:48-00:00</lastmod>
+<lastmod>2017-08-08T11:49:43-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://henrychenv.github.io/categories.html</loc>
-<lastmod>2016-05-15T00:29:48-00:00</lastmod>
+<lastmod>2017-08-08T11:49:43-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://henrychenv.github.io/keywork-only-argument.html</loc>
+<lastmod>2017-03-12T16:27:00+08:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://henrychenv.github.io/pull-from-upstrea.html</loc>
+<lastmod>2016-06-11T22:59:00+08:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -180,7 +194,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://henrychenv.github.io/author/henry-chen.html</loc>
-<lastmod>2016-05-14T21:23:00+08:06</lastmod>
+<lastmod>2017-03-12T16:27:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

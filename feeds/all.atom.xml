@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://henrychenv.github.io/" rel="alternate"></link><link href="http://henrychenv.github.io/feeds/all.atom.xml" rel="self"></link><id>http://henrychenv.github.io/</id><updated>2016-05-14T21:23:00+08:00</updated><entry><title>Mac OS 环境配置</title><link href="http://henrychenv.github.io/mac-env-settings.html" rel="alternate"></link><updated>2016-05-14T21:23:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-05-14:mac-env-settings.html</id><summary type="html">&lt;div class="toc"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://henrychenv.github.io/" rel="alternate"></link><link href="http://henrychenv.github.io/feeds/all.atom.xml" rel="self"></link><id>http://henrychenv.github.io/</id><updated>2017-03-12T16:27:00+08:00</updated><entry><title>Keyword-only argument</title><link href="http://henrychenv.github.io/keywork-only-argument.html" rel="alternate"></link><updated>2017-03-12T16:27:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2017-03-12:keywork-only-argument.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#_1"&gt;只允许关键字参数&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#_2"&gt;简介&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#code"&gt;Code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#references"&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h3 id="_1"&gt;只允许关键字参数&lt;/h3&gt;
+&lt;h4 id="_2"&gt;简介&lt;/h4&gt;
+&lt;p&gt;Python 3 已经更改了函数参数分配给parameter
+slot的方式，可以在传递参数时使用单独的星号(&lt;em&gt;)，表示在这之后不接受变长度的参数。
+kwargs必须在&lt;/em&gt;之后, 具体参考 &lt;a href="https://www.python.org/dev/peps/pep-3102/"&gt;PEP 3102 &amp;ndash; Keyword-Only Arguments&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="code"&gt;Code&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;expmple.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="c1"&gt;# -*- coding=utf-8 -*-&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hello&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;world&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;run&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;$ python example.py&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;world&amp;#39;&lt;/span&gt;, 1, 2, &lt;span class="o"&gt;{})&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4 id="references"&gt;References&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://www.python.org/dev/peps/pep-3102/"&gt;PEP 3102 &amp;ndash; Keyword-Only Arguments&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="python3"></category></entry><entry><title>从upstream拉代码</title><link href="http://henrychenv.github.io/pull-from-upstrea.html" rel="alternate"></link><updated>2016-06-11T22:59:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-06-11:pull-from-upstrea.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;ul&gt;&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;从自定义的远程分支拉代码&lt;/p&gt;
+&lt;p&gt;```
+git remote -v
+git remote add upstream https://github.com/otheruser/repo.git
+git fetch upstream
+git checkout master
+git merge upstream/master
+`````&lt;/p&gt;</summary><category term="git"></category></entry><entry><title>Mac OS 环境配置</title><link href="http://henrychenv.github.io/mac-env-settings.html" rel="alternate"></link><updated>2016-05-14T21:23:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-05-14:mac-env-settings.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#mac-os"&gt;Mac OS 系统配置&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#_1"&gt;触摸板&lt;/a&gt;&lt;ul&gt;
@@ -24,6 +69,8 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#_5"&gt;工具&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="#vmware-fusion"&gt;vmware fusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#macvim"&gt;MacVim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#haroopad"&gt;haroopad&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -154,7 +201,13 @@ gdircolor的作用就是设置ls命令使用的环境变量LS_COLORS（BSD是LSC
 
 &lt;p&gt;如果在自己的库里面找不到，会去python官网找&lt;/p&gt;
 &lt;h2 id="_5"&gt;工具&lt;/h2&gt;
-&lt;h3 id="vmware-fusion"&gt;vmware fusion&lt;/h3&gt;</summary><category term="mac"></category><category term="env"></category></entry><entry><title>python中的字符串连接效率</title><link href="http://henrychenv.github.io/python-string-concat.html" rel="alternate"></link><updated>2016-05-08T20:44:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-05-08:python-string-concat.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;h3 id="vmware-fusion"&gt;vmware fusion&lt;/h3&gt;
+&lt;p&gt;虚拟机必备&lt;/p&gt;
+&lt;h3 id="macvim"&gt;MacVim&lt;/h3&gt;
+&lt;p&gt;比linux上的vim更好用，目前看来是这样的&lt;/p&gt;
+&lt;h3 id="haroopad"&gt;haroopad&lt;/h3&gt;
+&lt;p&gt;markdown编辑器&lt;br /&gt;
+&lt;a href="/static/downloads/mac-env/Haroopad-2016-06-06-setting.json"&gt;配置文件&lt;/a&gt;&lt;/p&gt;</summary><category term="mac"></category><category term="env"></category></entry><entry><title>python中的字符串连接效率</title><link href="http://henrychenv.github.io/python-string-concat.html" rel="alternate"></link><updated>2016-05-08T20:44:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-05-08:python-string-concat.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;&lt;/ul&gt;
 &lt;/div&gt;
 &lt;p&gt;之前有人跟我说，python中不要用+连接字符串，效率很低，但问到原因，没解释清楚，表示不服，于是自己亲测了下&lt;/p&gt;
