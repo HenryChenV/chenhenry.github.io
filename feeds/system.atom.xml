@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://henrychenv.github.io/" rel="alternate"></link><link href="http://henrychenv.github.io/feeds/system.atom.xml" rel="self"></link><id>http://henrychenv.github.io/</id><updated>2016-04-14T11:43:00+08:00</updated><entry><title>查看哪个程序占用了端口</title><link href="http://henrychenv.github.io/port-already-in-use.html" rel="alternate"></link><updated>2016-04-14T11:43:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-04-14:port-already-in-use.html</id><summary type="html">&lt;div class="toc"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://chenhenry.cn/" rel="alternate"></link><link href="http://chenhenry.cn/feeds/system.atom.xml" rel="self"></link><id>http://chenhenry.cn/</id><updated>2017-12-04T21:04:00+08:00</updated><entry><title>记一次OOM问题排查</title><link href="http://chenhenry.cn/oom-problem-diagnosis.html" rel="alternate"></link><updated>2017-12-04T21:04:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:chenhenry.cn,2017-12-04:oom-problem-diagnosis.html</id><summary type="html">&lt;p&gt;在一个项目中使用了consumer接收消息, 若干个handler注册在了一个consumer中. 
+启动时, 由一个主进程fork出8个子进程同时接收消息, 没有做子进程死往后自动重启的逻辑. 
+刚上线时, 查看进程, 总共由9个(1个主进程+8个子进程), 
+一个周末过后, 再次查看进程, 发现只有6个(1个主进程+5个子进程)了.&lt;/p&gt;
+&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#_1"&gt;问题排查&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#_2"&gt;缩小范围&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#oom"&gt;确定是OOM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#_3"&gt;诊断原因&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#_4"&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="_1"&gt;问题排查&lt;/h2&gt;
+&lt;h3 id="_2"&gt;缩小范围&lt;/h3&gt;
+&lt;p&gt;因为是若干个handler注册到了一个consumer中, 所以不知道是哪个handler的锅.
+第一次追踪这个问题时, 甚至在我眼前就消失了一个进程. 当时在运行的只有handler1,
+怀疑是命中了使用的框架的OOM策略, 我做了两件事:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;询问框架的同学OOM策略是什么, 被告知框架本身的OOM策略并没有在consumer上应用,
+   并建议我看下是否是系统的OOM所为;&lt;/li&gt;
+&lt;li&gt;将若干的handler按业务拆分到多个consumer中去, 一来,
+   减小handler自爆造成的影响, 二来缩小范围, 方便定位到是哪个handler&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="oom"&gt;确定是OOM&lt;/h3&gt;
+&lt;p&gt;拆分成多个consumer只后, 子进程自杀事件依然在继续. 先确定自杀的进程的PID是多少,
+因为8个子进程生成时间很接近, 因此PID也是接近的, 这个case中甚至是连续的,
+所以根据存活的进程的PID是可以推算出自杀的进程的PID的, 总共3个. 
+然后用dmesg命令查看内核环形缓冲区信息(或者可以直接&lt;code&gt;grep PID /var/log/message&lt;/code&gt;,
+只是需要sudo权限, 所以选择了不用sudo权限的dmesg)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;$ dmesg -T -d &lt;span class="p"&gt;|&lt;/span&gt; grep 21797&lt;/span&gt;
+&lt;span class="code-line"&gt;...&lt;/span&gt;
+&lt;span class="code-line"&gt;&lt;span class="o"&gt;[&lt;/span&gt;Mon Dec  &lt;span class="m"&gt;4&lt;/span&gt; 15:13:47 &lt;span class="m"&gt;2017&lt;/span&gt; &amp;lt;    0.000002&amp;gt;&lt;span class="o"&gt;]&lt;/span&gt; Out of memory: Kill process &lt;span class="m"&gt;21797&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;/path/to/command&lt;span class="o"&gt;)&lt;/span&gt; score &lt;span class="m"&gt;394&lt;/span&gt; or sacrifice child&lt;/span&gt;
+&lt;span class="code-line"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然后观察监控曲线, 在这个时间点附近确实有内存骤增的情况.
+那这就可以确定为OOM所为了.&lt;/p&gt;
+&lt;h3 id="_3"&gt;诊断原因&lt;/h3&gt;
+&lt;p&gt;然后看了下这个PID在log中最后的记录, 和被kill的时间相差9个小时, 3个进程都是这样.
+于是追踪这个handler的代码, 发现这个handler在处理前后分别由&lt;code&gt;start xxx&lt;/code&gt;和&lt;code&gt;end
+xxx&lt;/code&gt;的日志, 而日志文件中只有&lt;code&gt;start xxx&lt;/code&gt;的日志, 没有&lt;code&gt;end xxx&lt;/code&gt;的日志.
+于是可以断定这个handler没有跑完就被kill了. &lt;br /&gt;
+然后看下处理过程中有没有内存占用比较高的操作, 发现在处理后期有一个写文件的操作,
+因为数据量比较大, 造成内存骤增, 从而OOM.&lt;/p&gt;
+&lt;h2 id="_4"&gt;参考&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://blog.csdn.net/daiyudong2020/article/details/51543664"&gt;linux如何查看进程OOM killer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://linux.cn/article-3587-1.html"&gt;Linux系统中‘dmesg’命令处理故障和收集系统信息的7种用法&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="system"></category><category term="OOM"></category></entry><entry><title>查看哪个程序占用了端口</title><link href="http://chenhenry.cn/port-already-in-use.html" rel="alternate"></link><updated>2016-04-14T11:43:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:chenhenry.cn,2016-04-14:port-already-in-use.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;netstat -ntlp&lt;span class="p"&gt;|&lt;/span&gt;grep 8000&lt;/span&gt;
 &lt;span class="code-line"&gt;lsof -i:8000 &lt;/span&gt;
 &lt;span class="code-line"&gt;ps -ef &lt;span class="p"&gt;|&lt;/span&gt;grep &lt;span class="sb"&gt;`&lt;/span&gt;netstat -ntlp&lt;span class="p"&gt;|&lt;/span&gt;grep 8000&lt;span class="p"&gt;|&lt;/span&gt;awk &lt;span class="s1"&gt;&amp;#39;{print $7}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;|&lt;/span&gt;awk -F/ &lt;span class="s1"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="system"></category><category term="port"></category></entry><entry><title>软链接，硬链接</title><link href="http://henrychenv.github.io/soft-and-hard-link.html" rel="alternate"></link><updated>2016-01-31T18:57:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:henrychenv.github.io,2016-01-30:soft-and-hard-link.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="system"></category><category term="port"></category></entry><entry><title>软链接，硬链接</title><link href="http://chenhenry.cn/soft-and-hard-link.html" rel="alternate"></link><updated>2016-01-31T18:57:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:chenhenry.cn,2016-01-30:soft-and-hard-link.html</id><summary type="html">&lt;div class="toc"&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#_1"&gt;概论&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#_2"&gt;笔记&lt;/a&gt;&lt;ul&gt;

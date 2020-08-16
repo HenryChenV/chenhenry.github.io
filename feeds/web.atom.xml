@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Henry's SpiritLine</title><link href="http://chenhenry.cn/" rel="alternate"></link><link href="http://chenhenry.cn/feeds/web.atom.xml" rel="self"></link><id>http://chenhenry.cn/</id><updated>2017-09-05T21:56:00+08:00</updated><entry><title>MULTIPLE_CONTENT_DISPOSITION</title><link href="http://chenhenry.cn/err-response-headers-multiplue-content-disoposition.html" rel="alternate"></link><updated>2017-09-05T21:56:00+08:00</updated><author><name>Henry Chen</name></author><id>tag:chenhenry.cn,2017-09-05:err-response-headers-multiplue-content-disoposition.html</id><summary type="html">&lt;div class="toc"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#_1"&gt;背景&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#_2"&gt;原因&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#_3"&gt;解决&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#1"&gt;方案1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#2"&gt;方案2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#_4"&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="_1"&gt;背景&lt;/h2&gt;
+&lt;p&gt;有个下载功能，一直好好的，今天点击下载突然这样了: &lt;/p&gt;
+&lt;p&gt;&lt;img alt="static/images/web/err-response-mutiple-content-disposition" src="/static/images/web/err-response-mutiple-content-disposition.jpeg" /&gt;&lt;/p&gt;
+&lt;p&gt;页面上的错误code是: ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION&lt;/p&gt;
+&lt;h2 id="_2"&gt;原因&lt;/h2&gt;
+&lt;p&gt;相应头中设置了&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nt"&gt;Content-Disposition&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;attachment&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nt"&gt;filename&lt;/span&gt;&lt;span class="nc"&gt;.html&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;filename中包含逗号&lt;/p&gt;
+&lt;h2 id="_3"&gt;解决&lt;/h2&gt;
+&lt;h3 id="1"&gt;方案1&lt;/h3&gt;
+&lt;p&gt;去掉filename中的逗号&lt;/p&gt;
+&lt;h3 id="2"&gt;方案2&lt;/h3&gt;
+&lt;p&gt;给filename.html两边加引号, 就像这样: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="code-line"&gt;&lt;span class="nt"&gt;Content-Disposition&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;attachment&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;filename.html&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2 id="_4"&gt;参考&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/13578428/duplicate-headers-received-from-server"&gt;StackOverflow: Duplicate headers received from server&lt;/a&gt;&lt;br /&gt;
+&lt;a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition"&gt;MDN: content-Disposition&lt;/a&gt;&lt;/p&gt;</summary><category term="web"></category></entry></feed>

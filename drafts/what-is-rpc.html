@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RPC 是什么 &mdash; Henry's SpiritLine</title>
+  <meta name="author" content="henry">
+
+
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link href="http://chenhenry.cn/favicon.png" rel="icon">
+
+  <link href="http://chenhenry.cn/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="http://chenhenry.cn/">Henry's SpiritLine</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="chenhenry.cn">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+<ul class="main-navigation">
+      <li >
+        <a href="http://chenhenry.cn/category/english.html">English</a>
+      </li>
+      <li >
+        <a href="http://chenhenry.cn/category/essay.html">Essay</a>
+      </li>
+      <li >
+        <a href="http://chenhenry.cn/category/git.html">Git</a>
+      </li>
+      <li >
+        <a href="http://chenhenry.cn/category/mysql.html">Mysql</a>
+      </li>
+      <li >
+        <a href="http://chenhenry.cn/category/others.html">Others</a>
+      </li>
+      <li >
+        <a href="http://chenhenry.cn/category/python.html">Python</a>
+      </li>
+      <li >
+        <a href="http://chenhenry.cn/category/qian-duan.html">前端</a>
+      </li>
+      <li >
+        <a href="http://chenhenry.cn/category/system.html">System</a>
+      </li>
+      <li >
+        <a href="http://chenhenry.cn/category/vim.html">Vim</a>
+      </li>
+      <li class="active">
+        <a href="http://chenhenry.cn/category/web.html">Web</a>
+      </li>
+      <li >
+        <a href="http://chenhenry.cn/category/yun-wei.html">运维</a>
+      </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">RPC 是什么</h1>
+    <p class="meta">
+<time datetime="2017-09-10T04:50:00+08:00" pubdate>2017-09-10</time>    </p>
+</header>
+
+  <div class="entry-content"><p>对于RPC，写过几年代码的基本都听过，有些还用过，特别是在大公司。<br />
+但你真的明白这个是什么吗？本文就带你一起探究什么是RPC。</p>
+<div class="toc">
+<ul>
+<li><a href="#rpc">为什么要用RPC</a><ul>
+<li><a href="#rpc-vs-http">RPC vs HTTP</a></li>
+</ul>
+</li>
+<li><a href="#rpc_1">RPC原理</a><ul>
+<li><a href="#rpc_2">RPC调用流程</a></li>
+</ul>
+</li>
+<li><a href="#rpc_3">常用的RPC框架</a></li>
+<li><a href="#_1">参考</a></li>
+</ul>
+</div>
+<h2 id="rpc">为什么要用RPC</h2>
+<blockquote>
+<p>您这是太多概念混在一块了。 
+先从基本概念看起。 </p>
+<p>RPC就是远程调用。  </p>
+<p>通常调用一个函数是本地调用，因为函数的实现或者说服务的实现大多数在本地，比如 
+源码，静态库，或者动态库。以C和动态库为例，使用起来两个部分。第一初始化：加 
+载库获得函数指针。  第二，调用时候，用函数指针去调用函数。 </p>
+<p>但在多节点情况下， 服务的实现和调用方就不在一个节点了。 
+在没有远程调用概念时，调用方最简单的做法是 获取服务方的位置协议， 根据协议把 
+参数打包成某个格式，并传输给服务方，然后等待返回，等返回的数据到了，解码，处 
+理结果。 </p>
+<p>引入远程调用概念，让调用方可以不用具体知道服务的实现在哪里，直接调用函数，那 
+么编程不就跟以前本地类似了， 代码移植不就简单了。 其实这个呢也就是把上面说 
+的，封装到函数里面， 但因为可以做成框架来用，就不用每个调用都要自己写一堆类 
+似的重复的代码，而只用按照框架做一些定义之类的，然后要么自动生成源码，要么动 
+态生成。 多语言情况下，一般是自动生成源码。 </p>
+<p>远程调用的客户端这边，会负责去发现服务方在哪里，数据传输协议是什么。这部分主 
+要是框架在做。 
+同时远程调用的客户端，还要将函数信息和函数的参数信息，编码打包，传输到服务 
+方，等待返回，对结果解码。 当然还要处理超时，各种错误，比如编码解码错误。 </p>
+<p>下面来说你的问题。 
+问题1. 显然现有RPC后又http。 
+http在RPC中只是是客户端和服务端的传输协议。json是参数和返回值的编码方式， 你 
+选择xml也可以（SOAP就是如此），选其他的也行， 用json是因为可以跟js共用。 </p>
+<p>问题2. 远程调用的客户端这边，会负责去发现服务方在哪里，数据传输协议是什么。 
+这部分主要是框架在做。<br />
+最简单发现服务方法的是 读取配置文件，访问数据库不就是这样做的。 
+但分布式情况下，服务节点多，有的节点会宕机，还有会扩容，那不就需要动态发现服 
+务节点，和获取服务节点的状态。 
+所以RPC在分布式情况下使用，就必然扩展到要考虑服务发现和监控。 </p>
+<p>上面只说了客户端，服务端也是需要很多考虑。  </p>
+</blockquote>
+<h3 id="rpc-vs-http">RPC vs HTTP</h3>
+<p>HTTP了解得很深的人不多，但用过的人很多，可以用的地方也很多，为什么有了这么好的一个协议，还要费心思搞出个RPC来呢？</p>
+<h2 id="rpc_1">RPC原理</h2>
+<h3 id="rpc_2">RPC调用流程</h3>
+<h2 id="rpc_3">常用的RPC框架</h2>
+<h2 id="_1">参考</h2>
+<p><a href="https://www.zhihu.com/question/25536695">知乎: 谁能用通俗的语言解释一下什么是 RPC 框架？</a><br />
+<a href="http://blog.brucefeng.info/post/what-is-rpc">RPC是什么</a>
+<a href="http://blog.jobbole.com/92290/">你应该知道的 RPC 原理</a>
+<a href="https://www.zhihu.com/question/41609070">知乎：既然有http 请求，为什么还要用rpc调用？</a>
+<a href="http://www.newsmth.net/nForum/#!article/Networking/74832">水木清华</a>
+<a href="http://houyao123.com/archives/3893">从核心概念和技术层面着眼，系统化认识RPC</a></p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        Henry Chen
+    </span>
+  </span>
+<time datetime="2017-09-10T04:50:00+08:00" pubdate>2017-09-10</time>  <span class="categories">
+    <a class='category' href='http://chenhenry.cn/category/web.html'>Web</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="http://chenhenry.cn/tag/rpc.html">rpc</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="http://chenhenry.cn/mysql-tps-qps.html">MySQL的TPS, QPS计算</a>
+      </li>
+      <li class="post">
+          <a href="http://chenhenry.cn/oom-problem-diagnosis.html">记一次OOM问题排查</a>
+      </li>
+      <li class="post">
+          <a href="http://chenhenry.cn/err-response-headers-multiplue-content-disoposition.html">MULTIPLE_CONTENT_DISPOSITION</a>
+      </li>
+      <li class="post">
+          <a href="http://chenhenry.cn/keywork-only-argument.html">Keyword-only argument</a>
+      </li>
+      <li class="post">
+          <a href="http://chenhenry.cn/pull-from-upstrea.html">从upstream拉代码</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="http://chenhenry.cn/category/english.html">English</a></li>
+        <li><a href="http://chenhenry.cn/category/essay.html">Essay</a></li>
+        <li><a href="http://chenhenry.cn/category/git.html">GIT</a></li>
+        <li><a href="http://chenhenry.cn/category/mysql.html">MySQL</a></li>
+        <li><a href="http://chenhenry.cn/category/others.html">Others</a></li>
+        <li><a href="http://chenhenry.cn/category/python.html">Python</a></li>
+        <li><a href="http://chenhenry.cn/category/qian-duan.html">前端</a></li>
+        <li><a href="http://chenhenry.cn/category/system.html">System</a></li>
+        <li><a href="http://chenhenry.cn/category/vim.html">VIM</a></li>
+        <li><a href="http://chenhenry.cn/category/web.html">Web</a></li>
+        <li><a href="http://chenhenry.cn/category/yun-wei.html">运维</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+    <a href="http://chenhenry.cn/tag/front-end.html">front-end</a>,    <a href="http://chenhenry.cn/tag/symbolic-link.html">symbolic-link</a>,    <a href="http://chenhenry.cn/tag/counter.html">counter</a>,    <a href="http://chenhenry.cn/tag/ted.html">ted</a>,    <a href="http://chenhenry.cn/tag/life.html">life</a>,    <a href="http://chenhenry.cn/tag/vim.html">vim</a>,    <a href="http://chenhenry.cn/tag/design-pattern.html">design-pattern</a>,    <a href="http://chenhenry.cn/tag/reading-notes.html">reading-notes</a>,    <a href="http://chenhenry.cn/tag/mysql.html">mysql</a>,    <a href="http://chenhenry.cn/tag/qps.html">qps</a>,    <a href="http://chenhenry.cn/tag/port.html">port</a>,    <a href="http://chenhenry.cn/tag/configparser.html">configparser</a>,    <a href="http://chenhenry.cn/tag/web.html">web</a>,    <a href="http://chenhenry.cn/tag/git.html">git</a>,    <a href="http://chenhenry.cn/tag/thinking.html">thinking</a>,    <a href="http://chenhenry.cn/tag/hard-link.html">hard-link</a>,    <a href="http://chenhenry.cn/tag/system.html">system</a>,    <a href="http://chenhenry.cn/tag/build-in-function.html">build-in-function</a>,    <a href="http://chenhenry.cn/tag/python.html">python</a>,    <a href="http://chenhenry.cn/tag/theme.html">theme</a>,    <a href="http://chenhenry.cn/tag/collections.html">collections</a>,    <a href="http://chenhenry.cn/tag/python3.html">python3</a>,    <a href="http://chenhenry.cn/tag/env.html">env</a>,    <a href="http://chenhenry.cn/tag/uwsgi.html">uwsgi</a>,    <a href="http://chenhenry.cn/tag/play.html">play</a>,    <a href="http://chenhenry.cn/tag/centos7.html">centos7</a>,    <a href="http://chenhenry.cn/tag/chaos.html">chaos</a>,    <a href="http://chenhenry.cn/tag/string.html">string</a>,    <a href="http://chenhenry.cn/tag/oom.html">OOM</a>,    <a href="http://chenhenry.cn/tag/nginx.html">nginx</a>,    <a href="http://chenhenry.cn/tag/mac.html">mac</a>,    <a href="http://chenhenry.cn/tag/with.html">with</a>,    <a href="http://chenhenry.cn/tag/concat.html">concat</a>,    <a href="http://chenhenry.cn/tag/c.html">c</a>,    <a href="http://chenhenry.cn/tag/work.html">work</a>,    <a href="http://chenhenry.cn/tag/blog.html">blog</a>,    <a href="http://chenhenry.cn/tag/soft-link.html">soft-link</a>,    <a href="http://chenhenry.cn/tag/tps.html">tps</a>,    <a href="http://chenhenry.cn/tag/english.html">English</a>,    <a href="http://chenhenry.cn/tag/fun.html">fun</a>,    <a href="http://chenhenry.cn/tag/dream.html">dream</a>  </section>
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="http://weibo.com/dulihandong" target="_blank">Weibo</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Blogroll</h1>
+        <ul>
+            <li><a href="https://github.com/HenryChenV" target="_blank">Github</a></li>
+            <li><a href="http://threebook.cn" target="_blank">ThreeBook</a></li>
+            <li><a href="http://markdown-zh.readthedocs.org/en/latest/" target="_blank">Markdown Syntax</a></li>
+            <li><a href="http://pelican-docs-zh-cn.readthedocs.org/en/latest/" target="_blank">Pelican 中文文档</a></li>
+            <li><a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000#0" target="_blank">廖雪峰 Python 2.7教程</a></li>
+            <li><a href="http://python-china.org" target="_blank">Python China</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2015&ndash;2018  henry &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+  <script src="http://chenhenry.cn/theme/js/modernizr-2.0.js"></script>
+  <script src="http://chenhenry.cn/theme/js/ender.js"></script>
+  <script src="http://chenhenry.cn/theme/js/octopress.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    var disqus_shortname = 'spiritline';
+    var disqus_identifier = '/drafts/what-is-rpc.html';
+    var disqus_url = 'http://chenhenry.cn/drafts/what-is-rpc.html';
+    var disqus_title = 'RPC 是什么';
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+</body>
+</html>
